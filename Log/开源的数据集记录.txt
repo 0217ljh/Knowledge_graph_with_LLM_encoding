@@ -1,0 +1,15 @@
+官能团信息，包括一些其它的内容：
+https://www.meta-synthesis.com/webbook/44_pi-systems/FG_database.php
+
+一些研究人员已经从公共化学数据库和科学文献中构建了 KG，以提取化学物质与疾病或药物配对之间的关联19,20。
+
+20. Lin, X., Quan, Z., Wang, Z., Ma, T. & Zeng, X. KGNN: knowledge graph neural network for drug–drug interaction prediction. In Proc. Twenty-Ninth International Joint Conference on Artificial Intelligence (ed. Bessiere, C) 2739–2745 (International Joint Conferences on Artificial Intelligence Organization, 2020).
+
+虽然最近的一项研究11 提出了一种包含元素及其相应化学属性的元素周期表，但其基本 关系不足以容纳全面而有条理的基础化学知识
+11. Wang, Y., Wang, J., Cao, Z. & Farimani, A. B. Molecular contrastive learning of representations via graph neural networks. Nat. Mach. Intell. 4, 279–287 (2022).
+
+生理学和生物物理学八个分类基准
+BBBP,Tox21，ToxCast，SIDER,ClinTox，BACE，MUV,HIV
+
+物理化学和量子力学的六个回归基准上的测试结果
+ESOL，FreeSolv,Lipophilicity,QM7,QM8,QM9

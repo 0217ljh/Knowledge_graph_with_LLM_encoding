@@ -1,0 +1,14 @@
+batch_size: 512
+eval_batch_size: 256
+dropout: 0.15
+lr: 0.001
+num_layers: 7
+JK : "none"
+task_names:
+  - "small_molecule"
+ 
+d_multiple:
+  - 1
+
+d_min_ratio:
+  - 1

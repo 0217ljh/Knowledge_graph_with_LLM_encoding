@@ -1,0 +1,18 @@
+E2E-graph: &E2E-graph
+  task_level: e2e_graph
+  dataset_splitter: Graph_splitter
+  preprocess: null
+  construct: ConstructMolCls
+  args:
+    walk_length: null
+  eval_mode: max
+
+small_molecule: &small_molecule
+  <<: *E2E-graph
+  task: classification
+  dataset_name: small_molecule
+  process_label_func: process_reverse_binary_label
+  eval_metric: auc
+  eval_func: binary_auc_func
+  num_classes: -1
+

@@ -1,0 +1,9 @@
+用来检索维基百科的分子信息：
+https://wikipedia.cheminfo.org/。
+来自论文：Wikipedia Chemical Structure Explorer: substructure and similarity searching of molecules from Wikipedia
+
+Embedding方法：
+OWL2Vec* 的 KG 嵌入方法（参考文献 21）
+
+代码---目前有多种分子处理库支持将化合物分子的SMILES表示转化为图表示:
+如RDKit、DGLLife, pysmiles和torchdrug等。通过这些库，可获取组成分子的具体原子和键类型，原子的编号及坐标信息，进而将化合物分子的SMILES表示转化为图结构，进行下一步的表示学习。当然，SMILES本身作为一种序列表示，也可以直接作为模型的输入。

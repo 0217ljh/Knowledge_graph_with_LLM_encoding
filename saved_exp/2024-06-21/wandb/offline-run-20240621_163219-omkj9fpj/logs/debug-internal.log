@@ -1,0 +1,53 @@
+2024-06-21 16:32:19,459 INFO    StreamThr :31084 [internal.py:wandb_internal():86] W&B internal server running at pid: 31084, started at: 2024-06-21 16:32:19.458050
+2024-06-21 16:32:19,460 DEBUG   HandlerThread:31084 [handler.py:handle_request():146] handle_request: status
+2024-06-21 16:32:19,470 INFO    WriterThread:31084 [datastore.py:open_for_write():87] open: ./saved_exp\2024-06-21\wandb\offline-run-20240621_163219-omkj9fpj\run-omkj9fpj.wandb
+2024-06-21 16:32:19,477 DEBUG   HandlerThread:31084 [handler.py:handle_request():146] handle_request: run_start
+2024-06-21 16:32:19,499 DEBUG   HandlerThread:31084 [system_info.py:__init__():26] System info init
+2024-06-21 16:32:19,499 DEBUG   HandlerThread:31084 [system_info.py:__init__():41] System info init done
+2024-06-21 16:32:19,499 INFO    HandlerThread:31084 [system_monitor.py:start():194] Starting system monitor
+2024-06-21 16:32:19,499 INFO    SystemMonitor:31084 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-06-21 16:32:19,499 INFO    HandlerThread:31084 [system_monitor.py:probe():214] Collecting system info
+2024-06-21 16:32:19,505 INFO    SystemMonitor:31084 [interfaces.py:start():190] Started cpu monitoring
+2024-06-21 16:32:19,505 INFO    SystemMonitor:31084 [interfaces.py:start():190] Started disk monitoring
+2024-06-21 16:32:19,506 INFO    SystemMonitor:31084 [interfaces.py:start():190] Started gpu monitoring
+2024-06-21 16:32:19,513 INFO    SystemMonitor:31084 [interfaces.py:start():190] Started memory monitoring
+2024-06-21 16:32:19,518 DEBUG   HandlerThread:31084 [system_info.py:probe():150] Probing system
+2024-06-21 16:32:19,527 INFO    SystemMonitor:31084 [interfaces.py:start():190] Started network monitoring
+2024-06-21 16:32:19,528 DEBUG   HandlerThread:31084 [gitlib.py:_init_repo():56] git repository is invalid
+2024-06-21 16:32:19,528 DEBUG   HandlerThread:31084 [system_info.py:probe():198] Probing system done
+2024-06-21 16:32:19,528 DEBUG   HandlerThread:31084 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.22621-SP0', 'python': '3.10.12', 'heartbeatAt': '2024-06-21T08:32:19.527398', 'startedAt': '2024-06-21T08:32:19.444452', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '<python with no main file>', 'codePathLocal': None, 'host': 'DESKTOP-VP2HF0B', 'username': 'ljh', 'executable': 'c:\\Users\\ljh\\.conda\\envs\\test\\python.exe', 'cpu_count': 14, 'cpu_count_logical': 20, 'cpu_freq': {'current': 3500.0, 'min': 0.0, 'max': 3500.0}, 'cpu_freq_per_core': [{'current': 3500.0, 'min': 0.0, 'max': 3500.0}], 'disk': {'/': {'total': 150.8708610534668, 'used': 100.2105712890625}}, 'gpu': 'NVIDIA GeForce RTX 4070', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 4070', 'memory_total': 12878610432}], 'memory': {'total': 31.817447662353516}}
+2024-06-21 16:32:19,528 INFO    HandlerThread:31084 [system_monitor.py:probe():224] Finished collecting system info
+2024-06-21 16:32:19,528 INFO    HandlerThread:31084 [system_monitor.py:probe():227] Publishing system info
+2024-06-21 16:32:19,528 DEBUG   HandlerThread:31084 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-06-21 16:32:19,530 ERROR   HandlerThread:31084 [system_info.py:_save_conda():221] Error saving conda packages: [WinError 2] 系统找不到指定的文件。
+Traceback (most recent call last):
+  File "C:\Users\ljh\AppData\Roaming\Python\Python310\site-packages\wandb\sdk\internal\system\system_info.py", line 214, in _save_conda
+    subprocess.call(
+  File "c:\Users\ljh\.conda\envs\test\lib\subprocess.py", line 345, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "c:\Users\ljh\.conda\envs\test\lib\subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "c:\Users\ljh\.conda\envs\test\lib\subprocess.py", line 1456, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] 系统找不到指定的文件。
+2024-06-21 16:32:19,530 DEBUG   HandlerThread:31084 [system_info.py:_save_conda():222] Saving conda packages done
+2024-06-21 16:32:19,531 INFO    HandlerThread:31084 [system_monitor.py:probe():229] Finished publishing system info
+2024-06-21 16:32:19,728 DEBUG   HandlerThread:31084 [handler.py:handle_request():146] handle_request: python_packages
+2024-06-21 16:32:24,523 DEBUG   HandlerThread:31084 [handler.py:handle_request():146] handle_request: status_report
+2024-06-21 16:32:24,523 DEBUG   SenderThread:31084 [sender.py:send_request():406] send_request: status_report
+2024-06-21 16:32:29,560 DEBUG   HandlerThread:31084 [handler.py:handle_request():146] handle_request: status_report
+2024-06-21 16:32:29,560 DEBUG   SenderThread:31084 [sender.py:send_request():406] send_request: status_report
+2024-06-21 16:32:34,613 DEBUG   HandlerThread:31084 [handler.py:handle_request():146] handle_request: status_report
+2024-06-21 16:32:34,613 DEBUG   SenderThread:31084 [sender.py:send_request():406] send_request: status_report
+2024-06-21 16:32:39,661 DEBUG   HandlerThread:31084 [handler.py:handle_request():146] handle_request: status_report
+2024-06-21 16:32:39,661 DEBUG   SenderThread:31084 [sender.py:send_request():406] send_request: status_report
+2024-06-21 16:32:44,709 DEBUG   HandlerThread:31084 [handler.py:handle_request():146] handle_request: status_report
+2024-06-21 16:32:44,709 DEBUG   SenderThread:31084 [sender.py:send_request():406] send_request: status_report
+2024-06-21 16:32:49,748 DEBUG   HandlerThread:31084 [handler.py:handle_request():146] handle_request: status_report
+2024-06-21 16:32:49,748 DEBUG   SenderThread:31084 [sender.py:send_request():406] send_request: status_report
+2024-06-21 16:32:54,799 DEBUG   HandlerThread:31084 [handler.py:handle_request():146] handle_request: status_report
+2024-06-21 16:32:54,799 DEBUG   SenderThread:31084 [sender.py:send_request():406] send_request: status_report
+2024-06-21 16:32:59,848 DEBUG   HandlerThread:31084 [handler.py:handle_request():146] handle_request: status_report
+2024-06-21 16:32:59,848 DEBUG   SenderThread:31084 [sender.py:send_request():406] send_request: status_report
+2024-06-21 16:33:04,890 DEBUG   HandlerThread:31084 [handler.py:handle_request():146] handle_request: status_report
+2024-06-21 16:33:04,890 DEBUG   SenderThread:31084 [sender.py:send_request():406] send_request: status_report

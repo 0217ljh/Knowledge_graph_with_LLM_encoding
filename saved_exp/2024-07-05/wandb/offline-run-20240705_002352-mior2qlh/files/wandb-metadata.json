@@ -1,0 +1,46 @@
+{
+    "os": "Windows-10-10.0.22621-SP0",
+    "python": "3.10.12",
+    "heartbeatAt": "2024-07-04T16:23:52.678310",
+    "startedAt": "2024-07-04T16:23:52.605787",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "<python with no main file>",
+    "codePathLocal": null,
+    "host": "DESKTOP-VP2HF0B",
+    "username": "ljh",
+    "executable": "c:\\Users\\ljh\\.conda\\envs\\test\\python.exe",
+    "cpu_count": 14,
+    "cpu_count_logical": 20,
+    "cpu_freq": {
+        "current": 3500.0,
+        "min": 0.0,
+        "max": 3500.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3500.0,
+            "min": 0.0,
+            "max": 3500.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 150.8708610534668,
+            "used": 100.90149688720703
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 4070",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 4070",
+            "memory_total": 12878610432
+        }
+    ],
+    "memory": {
+        "total": 31.817447662353516
+    }
+}

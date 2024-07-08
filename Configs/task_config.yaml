@@ -1,0 +1,21 @@
+E2E-graph: &E2E-graph
+  task_level: e2e_graph
+  eval_pool_mode: mean
+  eval_set_constructs:
+    - stage: train
+      split_name: train
+    - stage: valid
+      split_name: valid
+    - stage: test
+      split_name: test
+    - stage: test
+      split_name: train
+    - stage: test
+      split_name: valid
+
+
+small_molecule: &small_molecule
+  <<: *E2E-graph
+  dataset: small_molecule
+
+
