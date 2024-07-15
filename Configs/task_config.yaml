@@ -14,9 +14,10 @@ E2E-graph: &E2E-graph
       split_name: valid
 
 
-Molecule_graph: &Molecule_graph
+Task4: &Task4
+# 任务4：光谱对应物质的化学分类
   <<: *E2E-graph
-  task_name: Base_classification
-  dataset_name: small_molecule
+  task_name: Spectral_Classification
+  dataset_name: Small_Molecule
 
 

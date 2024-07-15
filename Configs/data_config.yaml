@@ -7,10 +7,10 @@ E2E-graph: &E2E-graph
     walk_length: null
   eval_mode: max
 
-Molecule_graph: &Molecule_graph
+Small_Molecule_task4: &Small_Molecule_task4
   <<: *E2E-graph
-  task_name: Base_classification
-  dataset_name: small_molecule
+  task_name: Spectral_Classification
+  dataset_name: Small_Molecule
   process_label_func: process_binary_label
   eval_metric: auc
   eval_func: binary_auc_func

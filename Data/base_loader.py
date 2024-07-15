@@ -111,7 +111,8 @@ class DataLoader():
             raise FileNotFoundError(f"File {data_path} not found.")
         # 判断data_path是文件夹还是文件
         if not os.path.isdir(data_path):
-            KM = nx.read_gexf('.\Datasets\Knowledge graph(chemistry)\knowledge_graph.gexf')
+            KM = nx.read_gexf(data_path) # 是文件直接读取就行
+            #KM = nx.read_gexf('.\Datasets\Knowledge graph(chemistry)\knowledge_graph.gexf')
             output = {'Path': data_path,
                   'Name': None,
                   'Data': KM}
