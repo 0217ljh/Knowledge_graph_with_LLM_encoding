@@ -42,7 +42,7 @@ configs.append(
 
 # 可选的配置更新
 # 添加新的config
-override_config = utils.load_yaml('./Configs/Override/e2e_all_config.yaml')
+override_config = utils.load_yaml('./Configs/Override/e2e_all_config_test.yaml')
 configs.append(override_config)
 
 # 更新配置
@@ -87,6 +87,9 @@ if isinstance(params.task_names, str):
 else:
     task_names = params.task_names
 
+task_name = params.task_names[0]
+dataset_name = params.dataset_names[0]
+
 #*************************************************
 
 device, gpu_ids = utils.get_available_devices()
@@ -94,16 +97,20 @@ gpu_size = len(gpu_ids)
 
 utils.set_random_seed(0)
 
-encoder = SentenceEncoder('ST',batch_size = 1)
+encoder = SentenceEncoder(params.llm_name,batch_size = params.llm_b_size)
 
-dataset_output = MolOFADataset(name = 'Base_classification', load_texts = False,encoder=encoder,force_reload = True)
+dataset_output = MolOFADataset(name = task_name, load_texts = params.load_texts,encoder=encoder,force_reload = True)
 
 #*****************************************************
-task_config = task_config_lookup[task_names[0]]
+# task_config = task_config_lookup[task_names[0]]
+# dataset_config = data_config_lookup[task_names[0]]
+task_config = utils.get_task_config(task_name,dataset_name,task_config_lookup)
+dataset_config = utils.get_dataset_config(task_name,dataset_name,data_config_lookup)
+
 Stage_Config = task_config['eval_set_constructs']
 stage_config = Stage_Config[0]
 
-dataset_config = data_config_lookup[task_names[0]]
+
 
 
 # 数据集字典化
@@ -117,7 +124,7 @@ result = []
 result_valid = []
 for i in Stage_Config:
     if "dataset" not in i:  # 如果没有更换不同的数据集，此时默认的数据集为 config["dataset"]，即外层标的那个
-            i["dataset"] = task_config["dataset"]
+            i["dataset_names"] = task_config["dataset_name"]
     test_dataset[dataset_config['dataset_name']] = dataset_output   # 加载总数据集
     test_dataset_split, split_key = get_data_split(test_dataset,test_dataset_split,dataset_config)   # 根据stage划分不同的子数据集
     stage_name = get_stage_name(i, dataset_config)    # 获取对应的子数据集名称
@@ -141,7 +148,7 @@ for i in Stage_Config:
     if i["stage"] == "train":
         test_datasets[i["stage"]].append(data)
     else:
-        eval_data = make_data(i["dataset"],
+        eval_data = make_data(i["dataset_names"],
                             data,
                             i["split_name"],
                             dataset_config["eval_metric"],
@@ -177,7 +184,7 @@ gnn = PyGRGCNEdge(
 )
 
 bin_model = BinGraphAttModel if params.JK == "none" else BinGraphModel
-model = bin_model(model=gnn, llm_name=params.llm_name, outdim=out_dim, task_dim=1,
+model = bin_model(model=gnn, llm_name=params.llm_name, outdim=out_dim, task_dim=len(params.task_names),
                     add_rwpe=params.rwpe, dropout=params.dropout)
 
 #*************************************************************************************
@@ -199,7 +206,7 @@ else:
 
 train_data = make_train_data(test_datasets,data_multiple, min_ratio, data_val_index=val_task_index_lst)
 text_dataset = make_full_dm_list(
-    test_datasets, data_multiple, min_ratio, train_data
+    test_datasets, data_multiple, min_ratio, train_data,batch_size=params.batch_size,sample_size=params.train_sample_size,
 )
 params.datamodule = DataModule(
     text_dataset, gpu_size=gpu_size, num_workers=params.num_workers

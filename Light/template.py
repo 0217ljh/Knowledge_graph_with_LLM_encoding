@@ -79,8 +79,8 @@ class BaseTemplate(LightningModule):# 训练循环之类的应该都在这里
         self.eval_kit = eval_kit   # 训练损失函数与评估/测试部分
         
 
-    def on_test_epoch_start(self):
-        self.on_validation_epoch_start()
+    def on_test_epoch_start(self):       # 在测试集开始的时候模仿验证集
+        self.on_validation_epoch_start()   
 
     def configure_optimizers(self):
         optimizer = self.exp_config.get_optimizer()

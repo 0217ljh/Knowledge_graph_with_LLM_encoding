@@ -249,3 +249,17 @@ def make_mask_proportion(data,proportion=[6,2,2]):
         for j in class_list[i]['test']:
             data[j]['mask'] = 'test'
     return data
+
+def get_task_config(task_name,datset_name,task_config):
+    for i in task_config:
+        dataset = task_config[i].get('dataset_name', None)
+        task = task_config[i].get('task_name', None)
+        if dataset == datset_name and task == task_name:
+            return task_config[i]
+        
+def get_dataset_config(task_name,datset_name,task_config):
+    for i in task_config:
+        dataset = task_config[i].get('dataset_name', None)
+        task = task_config[i].get('task_name', None)
+        if dataset == datset_name and task == task_name:
+            return task_config[i]

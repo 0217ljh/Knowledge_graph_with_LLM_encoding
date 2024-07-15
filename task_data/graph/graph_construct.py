@@ -7,10 +7,16 @@ from task_data.base_construct import DatasetWithCollate
 from typing import Optional, Callable, Any, Tuple, Union
 
 def process_reverse_binary_label(embs, label):
+    # reverse the label
     binary_rep = torch.zeros((1, len(embs)))          # shape: [1, num_classes]
     binary_rep[0, label.squeeze().to(torch.long)] = 1 # [0,...,1...,0]
-    embs = embs[[1, 0]] # ?
-    # embs = embs
+    embs = embs[[1, 0]] # 反转标签代表的类别：原先emb中索引0的类别表示'Non-aromatic compound'，现在表示'Aromatic compound'
+    return label.view(1, -1).to(torch.long), embs, binary_rep   # label : tensor([[0/1/2/3/4...]])
+
+def process_binary_label(embs, label):
+    binary_rep = torch.zeros((1, len(embs)))          # shape: [1, num_classes]
+    binary_rep[0, label.squeeze().to(torch.long)] = 1 # [0,...,1...,0]
+    embs = embs[[0, 1]]
     return label.view(1, -1).to(torch.long), embs, binary_rep   # label : tensor([[0/1/2/3/4...]])
 
 class OFA_collater:
@@ -135,12 +141,12 @@ class GraphprocessDataset(DatasetWithCollate, ABC):
         Returns:
 
         """
-        (feat, edge_feat, edge_index, e_type, target_node_id, class_emb, label, binary_rep,) = feature_graph
+        (feat, edge_feat, edge_index, e_type, target_node_id, class_emb, label, binary_rep,sample_name) = feature_graph
         n_feat_node = len(feat)
         feat = self.make_prompt_node(feat, class_emb)   # 将一般节点信息，prompt节点信息，分类节点信息拼接在一起
-        prompt_edge_lst = []
-        prompt_edge_type_lst = []
-        prompt_edge_feat_lst = []
+        prompt_edge_lst = []        # 邻接矩阵
+        prompt_edge_type_lst = []   # 边种类
+        prompt_edge_feat_lst = []   # 边嵌入信息
         
         #处理prompt的edge部分************************************************************************************************
         for prompt_edge_str in self.prompt_edge_list:  # 对字典进行类似的处理是对key进行遍历
@@ -152,9 +158,7 @@ class GraphprocessDataset(DatasetWithCollate, ABC):
                 edge_emb = self.prompt_edge_emb
             else:
                 edge_emb = self.prompt_edge_emb[self.prompt_edge_list[prompt_edge_str][1]]
-            # If the number of edge emb is 1, repeat it for each prompt edge.
-            # If not, assume the number of edge emb equal to the number of prompt edge.
-            # Currently, only n2f and f2n in KG dataset will have number of edge emb larger than 1.
+            
             num_edge_emb = len(self.prompt_edge_list[prompt_edge_str][1])
             assert num_edge_emb == 1 or num_edge_emb == len(prompt_e_index[0])
             if num_edge_emb > 1:
@@ -187,14 +191,22 @@ class GraphprocessDataset(DatasetWithCollate, ABC):
 
     def to_pyg(self, feature_graph, prompted_graph):
         feat, edge_index, label, edge_feat, e_type = prompted_graph
-        new_subg = pyg.data.Data(feat, edge_index, y=label, edge_attr=edge_feat, edge_type=e_type)
-        num_class = len(feature_graph[-3])
+        new_subg = pyg.data.Data(
+                        feat, 
+                        edge_index, 
+                        y=label, 
+                        edge_attr=edge_feat, 
+                        edge_type=e_type,
+                        Name=[feature_graph[-1]]
+                        )
+        num_class = len(feature_graph[-4])
         bin_labels = torch.zeros(new_subg.num_nodes, dtype=torch.float)
-        bin_labels[new_subg.num_nodes - num_class:] = feature_graph[-1]
+        bin_labels[new_subg.num_nodes - num_class:] = feature_graph[-2]  
+        # label: [[0]] -> [0,...,1,0]   ; label: [[1]] -> [0,...,0,1]
         new_subg.bin_labels = bin_labels
-        set_mask(new_subg, "true_nodes_mask", list(range(new_subg.num_nodes - num_class, new_subg.num_nodes)))  # 取出分类节点
+        set_mask(new_subg, "true_nodes_mask", list(range(new_subg.num_nodes - num_class, new_subg.num_nodes)))  # 关于分类节点的mask
         set_mask(new_subg, "noi_node_mask", new_subg.num_nodes - num_class - 1)   # 取出Noi节点
-        set_mask(new_subg, "target_node_mask", feature_graph[-4])   # 取出原始节点
+        set_mask(new_subg, "target_node_mask", feature_graph[-5])   # 取出原始节点
         set_mask(new_subg, "feat_node_mask", list(range(len(feature_graph[0]))))  # 取出原始节点 
         new_subg.sample_num_nodes = new_subg.num_nodes
         new_subg.num_classes = num_class
@@ -238,6 +250,7 @@ class GraphListDataset(GraphprocessDataset):
 
     def make_feature_graph(self, index):
         g = self.g[self.data_idx[index]]  # 获取对应图样本
+        sample_name = g.Name  # 补充样本名
         edge_index = g.edge_index
         label = g.y      # tensor[0]
         # label_emb = self.class_emb(label).view(1, -1)
@@ -246,7 +259,7 @@ class GraphListDataset(GraphprocessDataset):
         e_type = torch.zeros(len(edge_index[0]), dtype=torch.long)   # 不同边线的种类，即：1.原图中的；2.连接prompt和原图的；3.连接prompt和class的
         target_node_id = list(range(len(node_feat)))
         label, emb, binary_rep = self.process_label(label)
-        return node_feat, edge_feat, edge_index, e_type, target_node_id, emb, label, binary_rep
+        return node_feat, edge_feat, edge_index, e_type, target_node_id, emb, label, binary_rep,sample_name
 
     def make_prompt_node(self, feat, class_emb):
         if not self.no_class_node:
@@ -300,8 +313,13 @@ class GraphListHierDataset(GraphListDataset):
         return prompt_edge
     
 def ConstructMolCls(dataset, split, split_name, prompt_feats, to_bin_cls_func, task_level, global_data, **kwargs):
-    return GraphListHierDataset(dataset, prompt_feats["class_node_text_feat"], prompt_feats["prompt_edge_text_feat"],
-                                prompt_feats["noi_node_text_feat"], split[split_name],
-                                process_label_func=globals()[to_bin_cls_func], prompt_edge_list=dataset.get_edge_list(task_level),
-                                **kwargs, )
+    return GraphListHierDataset(
+        dataset, prompt_feats["class_node_text_feat"], 
+        prompt_feats["prompt_edge_text_feat"],
+        prompt_feats["noi_node_text_feat"], 
+        split[split_name],
+        process_label_func=globals()[to_bin_cls_func], 
+        prompt_edge_list=dataset.get_edge_list(task_level),
+        **kwargs, 
+        )
 

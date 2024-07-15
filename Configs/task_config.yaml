@@ -14,8 +14,9 @@ E2E-graph: &E2E-graph
       split_name: valid
 
 
-small_molecule: &small_molecule
+Molecule_graph: &Molecule_graph
   <<: *E2E-graph
-  dataset: small_molecule
+  task_name: Base_classification
+  dataset_name: small_molecule
 
 

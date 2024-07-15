@@ -7,7 +7,7 @@ from torch.utils.data import Dataset,DataLoader, RandomSampler, DistributedSampl
 def binary_auc_func(func, output, batch):
     output = output.view(-1, batch.num_classes[0])    # batch表示一张图里面，存在'num_classes'这个属性
     # score = torch.sigmoid(output)[:, -1]
-    score = torch.nn.functional.softmax(output, dim=-1)[:, -1]   # 这里，之前在另一个地方有翻转，所以这里改回去，取最大值。-1和1在此应该是一样的
+    score = torch.nn.functional.softmax(output, dim=-1)[:, -1]   # 小于0.5表示标签0，大于0.5表示标签1
     return func(score, batch.y[:, -1].view(-1))
 
 class DataWithMeta:
@@ -59,8 +59,13 @@ def make_train_data(datasets, multiple, min_ratio, data_val_index=None):
 
 def make_full_dm_list(datasets, multiple, min_ratio, train_data=None,**kwargs):
         text_dataset = {
-            "train": DataWithMeta(make_train_data(datasets, multiple, min_ratio) if not train_data else train_data,
-                                  batch_size=20, sample_size=-1, ),
-            "val": datasets["valid"],
-            "test":datasets["test"], }
+            "train": DataWithMeta(
+                            make_train_data(datasets, multiple, min_ratio) if not train_data else train_data,
+                            #batch_size=20, 
+                            batch_size=getattr(kwargs, "batch_size", 20),
+                            #sample_size=-1, 
+                            sample_size=getattr(kwargs, "sample_size", -1),
+                            ),
+            "val": datasets["valid"],   #  DataWithMeta
+            "test":datasets["test"], }  #  DataWithMeta
         return text_dataset

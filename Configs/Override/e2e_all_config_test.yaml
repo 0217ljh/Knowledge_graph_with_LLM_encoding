@@ -1,0 +1,23 @@
+seed: 0
+batch_size: 20
+eval_batch_size: 20
+dropout: 0.15
+lr: 0.001
+num_layers: 7
+JK : "none"
+num_workers: 0
+task_names:
+  - "Base_classification"
+
+dataset_names:
+ - "small_molecule"
+
+ 
+d_multiple:
+  - 1
+
+d_min_ratio:
+  - 1
+
+
+

@@ -7,11 +7,11 @@ E2E-graph: &E2E-graph
     walk_length: null
   eval_mode: max
 
-small_molecule: &small_molecule
+Molecule_graph: &Molecule_graph
   <<: *E2E-graph
-  task: classification
+  task_name: Base_classification
   dataset_name: small_molecule
-  process_label_func: process_reverse_binary_label
+  process_label_func: process_binary_label
   eval_metric: auc
   eval_func: binary_auc_func
   num_classes: -1

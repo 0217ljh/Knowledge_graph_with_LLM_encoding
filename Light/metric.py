@@ -47,7 +47,7 @@ class EvalKit(torch.nn.Module):
         self.test_metric = self.metric_name[self.test_monitor_state]
 
     def compute_loss(self, output: Any, batch: Any):
-        # 用在训练/验证/测试过程中，作为损失函数进行计算
+        # 用在训练/验证/测试过程中，作为损失函数进行计算，先获取class_node
         return self.loss_func(self.loss, output, batch)   # flat_binary_func(BCEWithLogitsLoss())
 
     def has_eval_state(self, state: str):# 判断是否存在，并返回bool值

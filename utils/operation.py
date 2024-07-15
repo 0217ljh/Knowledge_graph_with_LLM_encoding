@@ -1,6 +1,6 @@
 # 划分train,valid,test
 def get_split_key(dataset_config):
-        return dataset_config["dataset_name"] + "-" + dataset_config["task_level"] + "-" + dataset_config["task"]
+        return dataset_config["dataset_name"] + "-" + dataset_config["task_level"] + "-" + dataset_config["task_name"]
 
 def Graph_splitter(dataset):
     return dataset.get_idx_split()
@@ -26,7 +26,7 @@ def get_data_split(
     return dataset_split,split_key
 
 def get_stage_name(stage_config, dataset_config):
-    return "-".join([stage_config["dataset"], get_split_key(dataset_config), stage_config["stage"],
+    return "-".join([stage_config["dataset_names"], get_split_key(dataset_config), stage_config["stage"],
                         stage_config["split_name"]])
 
 
