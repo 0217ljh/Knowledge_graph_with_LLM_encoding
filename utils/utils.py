@@ -66,6 +66,7 @@ def set_random_seed(seed):
         seed {int} -- Random seed to set
     """
     torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
@@ -228,13 +229,14 @@ class SmartTimer:
     #                     meta_data={"eval_func": globals()[eval_func], "eval_mode": kwargs["eval_mode"]}, )
 
 
-def make_mask_proportion(data,proportion=[6,2,2]):
+def make_mask_proportion(data,proportion=[6,2,2],seed=0):
     label_list = list(set([data[i]['label'] for i in data]))
     class_list = {i:[] for i in label_list}
     for i in data:
         label = data[i]['label']
         class_list[label].append(i)
     for i in class_list:
+        np.random.seed(seed)
         np.random.shuffle(class_list[i])
         length = len(class_list[i])
         train = int(length*proportion[0]/sum(proportion))
@@ -250,16 +252,16 @@ def make_mask_proportion(data,proportion=[6,2,2]):
             data[j]['mask'] = 'test'
     return data
 
-def get_task_config(task_name,datset_name,task_config):
+def get_task_config(task_index,datset_name,task_config):
     for i in task_config:
         dataset = task_config[i].get('dataset_name', None)
-        task = task_config[i].get('task_name', None)
-        if dataset == datset_name and task == task_name:
+        task = task_config[i].get('task_index', None)
+        if dataset == datset_name and task == task_index:
             return task_config[i]
         
-def get_dataset_config(task_name,datset_name,task_config):
+def get_dataset_config(task_index,datset_name,task_config):
     for i in task_config:
         dataset = task_config[i].get('dataset_name', None)
-        task = task_config[i].get('task_name', None)
-        if dataset == datset_name and task == task_name:
+        task = task_config[i].get('task_index', None)
+        if dataset == datset_name and task == task_index:
             return task_config[i]

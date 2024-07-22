@@ -2,17 +2,28 @@ E2E-graph: &E2E-graph
   task_level: e2e_graph
   dataset_splitter: Graph_splitter
   preprocess: null
+  intergrate: Spec_Graph_Dataset
   construct: ConstructMolCls
   args:
     walk_length: null
   eval_mode: max
 
-Small_Molecule_task4: &Small_Molecule_task4
+Small_Molecules_Task3: &Small_Molecules_Task3
   <<: *E2E-graph
-  task_name: Spectral_Classification
-  dataset_name: Small_Molecule
+  task_name: Spectral_Judgment
+  task_index: Task3
+  dataset_name: Small_Molecules
   process_label_func: process_binary_label
   eval_metric: auc
   eval_func: binary_auc_func
   num_classes: -1
 
+Small_Molecules_Task4: &Small_Molecules_Task4
+  <<: *E2E-graph
+  task_name: Spectral_Classification
+  task_index: Task4
+  dataset_name: Small_Molecules
+  process_label_func: process_binary_label
+  eval_metric: auc
+  eval_func: binary_auc_func
+  num_classes: -1

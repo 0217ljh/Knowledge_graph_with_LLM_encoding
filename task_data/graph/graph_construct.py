@@ -86,9 +86,9 @@ class GraphprocessDataset(DatasetWithCollate, ABC):
                                     different tasks.
             **kwargs: additional arguments.
         """
-        self.g = graph
+        self.g = graph        
         self.process_label_func = process_label_func
-        self.kwargs = kwargs  # 字典
+        self.kwargs = kwargs  # addictional parameter
 
         self.prompt_edge_emb = None
         self.llm_tokenizer = None
@@ -249,14 +249,14 @@ class GraphListDataset(GraphprocessDataset):
         return len(self.data_idx)
 
     def make_feature_graph(self, index):
-        g = self.g[self.data_idx[index]]  # 获取对应图样本
-        sample_name = g.Name  # 补充样本名
+        g = self.g[self.data_idx[index]]  # get graph from list 
+        sample_name = g.Name  # get the sample name
         edge_index = g.edge_index
-        label = g.y      # tensor[0]
+        label = g.y      # equal to g.y_label generally
         # label_emb = self.class_emb(label).view(1, -1)
         node_feat = g.node_text_feat
         edge_feat = g.edge_text_feat
-        e_type = torch.zeros(len(edge_index[0]), dtype=torch.long)   # 不同边线的种类，即：1.原图中的；2.连接prompt和原图的；3.连接prompt和class的
+        e_type = torch.zeros(len(edge_index[0]), dtype=torch.long)   # different class of edge，i.e.1.in origin graph；2.connect prompt node and origin graph, including converse；3.connect prompt node and class node；
         target_node_id = list(range(len(node_feat)))
         label, emb, binary_rep = self.process_label(label)
         return node_feat, edge_feat, edge_index, e_type, target_node_id, emb, label, binary_rep,sample_name
@@ -279,7 +279,7 @@ class GraphListDataset(GraphprocessDataset):
         return prompt_edge
 
 class GraphListHierDataset(GraphListDataset):
-    def __init__(self, graphs, class_embs, prompt_edge_emb, noi_node_emb, data_idx, process_label_func=None,
+    def __init__(self, graphs, noi_node_emb, class_embs, prompt_edge_emb, data_idx, process_label_func=None,
                  **kwargs, ):
         super().__init__(graphs, class_embs, prompt_edge_emb, data_idx, process_label_func, **kwargs, )
         self.noi_node_emb = noi_node_emb
@@ -288,7 +288,7 @@ class GraphListHierDataset(GraphListDataset):
         if self.no_class_node:
             feat = np.concatenate([feat, self.noi_node_emb], axis=0)
         else:
-            feat = np.concatenate([feat, self.noi_node_emb, class_emb], axis=0)   # 将一般节点信息，prompt节点信息，分类节点信息拼接在一起
+            feat = np.concatenate([feat, self.noi_node_emb, class_emb], axis=0)   # stack the tensor of orgin node,prompt node and class node
         return feat
 
     def make_f2n_edge(self, target_node_id, class_emb, n_feat_node): # 返回一个邻接矩阵
@@ -312,14 +312,24 @@ class GraphListHierDataset(GraphListDataset):
             dtype=torch.long, )
         return prompt_edge
     
-def ConstructMolCls(dataset, split, split_name, prompt_feats, to_bin_cls_func, task_level, global_data, **kwargs):
+def ConstructMolCls(
+                dataset, 
+                split, 
+                split_name, 
+                prompt_feats, 
+                to_bin_cls_func, 
+                task_level, 
+                global_data, 
+                **kwargs
+                ):
     return GraphListHierDataset(
-        dataset, prompt_feats["class_node_text_feat"], 
-        prompt_feats["prompt_edge_text_feat"],
-        prompt_feats["noi_node_text_feat"], 
-        split[split_name],
-        process_label_func=globals()[to_bin_cls_func], 
-        prompt_edge_list=dataset.get_edge_list(task_level),
-        **kwargs, 
-        )
+                    dataset, 
+                    prompt_feats["noi_node_text_feat"],
+                    prompt_feats["class_node_text_feat"], 
+                    prompt_feats["prompt_edge_text_feat"],
+                    split[split_name],  # Mask
+                    process_label_func=globals()[to_bin_cls_func], 
+                    prompt_edge_list=dataset.get_edge_list(task_level), # get edge map
+                    **kwargs, 
+                    )
 

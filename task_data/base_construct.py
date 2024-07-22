@@ -26,27 +26,41 @@ class MultiDataset(DatasetWithCollate):
     the training datasets in each epoch based on validation results.
     """
 
-    def __init__(self, datas, data_val_index=None, dataset_multiple=1, window_size=5, patience=3, min_ratio=0.1,
-                 mode=None, ):
+    def __init__(
+                self, 
+                datas, 
+                data_val_index=None, 
+                dataset_multiple=1, 
+                min_ratio=0.1,
+                window_size=5, 
+                patience=3, 
+                mode=None, 
+                ):
         self.datas = datas
         self.sizes = np.array([len(d) for d in datas])
         self.performance_record = []
-        self.patience = patience
+
         self.data_val_index = data_val_index
         if self.data_val_index is None:
             self.data_val_index = [[i] for i in range(len(self.datas))]
+
+        self.patience = patience
         if isinstance(self.patience, int):
             self.patience = np.zeros(len(self.sizes)) + self.patience
         self.inpatience = np.zeros(len(self.patience))
+
         self.window_size = window_size
         if isinstance(self.window_size, int):
             self.window_size = np.zeros(len(self.sizes)) + self.window_size
+        
         self.dataset_multiple = dataset_multiple
         if not isinstance(self.dataset_multiple, list):
             self.dataset_multiple = (np.zeros(len(self.sizes), dtype=float) + self.dataset_multiple)
+
         self.min_ratio = min_ratio
         if isinstance(self.min_ratio, float):
             self.min_ratio = np.zeros(len(self.sizes), dtype=float) + self.min_ratio
+
         self.mode = mode
         if mode is not None:
             self.mode = np.array([1 if m == "max" else -1 for m in self.mode])
@@ -54,10 +68,11 @@ class MultiDataset(DatasetWithCollate):
         self.compute_sizes()
 
     def compute_sizes(self):
-        self.aug_sizes = (self.sizes * np.array(self.dataset_multiple)).astype(int)
+        self.aug_sizes = (self.sizes * np.array(self.dataset_multiple)).astype(int) # additional coefficient
         self.size_seg = np.cumsum(self.aug_sizes)
-        self.ind2dataset = np.arange(len(self.datas)).repeat(self.aug_sizes)
-        self.sample_ind = (np.random.rand(len(self.ind2dataset)) * self.sizes.repeat(self.aug_sizes)).astype(int)
+        # used to segment different datasets, easy to multiple different coefficient for different datasets
+        self.ind2dataset = np.arange(len(self.datas)).repeat(self.aug_sizes) # index for different datasets
+        self.sample_ind = (np.random.rand(len(self.ind2dataset)) * self.sizes.repeat(self.aug_sizes)).astype(int) # get sample index, note that have repetitive index
         self.data_start_index = np.r_[0, self.size_seg[:-1]]
 
     def __len__(self):
@@ -65,7 +80,7 @@ class MultiDataset(DatasetWithCollate):
 
     def __getitem__(self, index):
         dataset_ind = self.ind2dataset[index]
-        dataset = self.datas[dataset_ind]
+        dataset = self.datas[dataset_ind]  # get particular dataset
         ret_data = dataset[self.sample_ind[index]]
         return ret_data
 

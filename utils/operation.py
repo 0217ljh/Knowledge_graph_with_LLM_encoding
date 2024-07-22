@@ -1,9 +1,11 @@
+def Graph_splitter(dataset):
+    return dataset.get_idx_split()
+
+
 # 划分train,valid,test
 def get_split_key(dataset_config):
         return dataset_config["dataset_name"] + "-" + dataset_config["task_level"] + "-" + dataset_config["task_name"]
 
-def Graph_splitter(dataset):
-    return dataset.get_idx_split()
 
 def get_data_split(
                    # self, 
@@ -43,3 +45,5 @@ def get_global_data(datset,dataset_split,preprocess_storage,dataset_config):
         preprocess_storage[split_key] = global_data
     return preprocess_storage,split_key
 
+def get_construct_func(task_config):
+    return task_config.get("construct")  # 获取键值，例如'LinkConstruct'

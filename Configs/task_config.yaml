@@ -13,11 +13,19 @@ E2E-graph: &E2E-graph
     - stage: test
       split_name: valid
 
+Task3_Small_Molecules: &Task3_Small_Molecules
+# Tak3:Judegement of Spectral
+  <<: *E2E-graph
+  task_name: Spectral_Judgment
+  task_index: Task3
+  dataset_name: Small_Molecules
 
-Task4: &Task4
-# 任务4：光谱对应物质的化学分类
+Task4_Small_Molecules: &Task4_Small_Molecules
+# Tak4:classification
   <<: *E2E-graph
   task_name: Spectral_Classification
-  dataset_name: Small_Molecule
+  task_index: Task4
+  dataset_name: Small_Molecules
+
 
 

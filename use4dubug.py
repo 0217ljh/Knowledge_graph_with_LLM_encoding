@@ -1,6 +1,7 @@
 import os
 import yaml
 import torch
+import random
 import numpy as np
 import pandas as pd
 import networkx as nx
@@ -16,7 +17,7 @@ from Data.data_collect.datatype.excel.excel_collect import Excel_PygDataset
 from Data.data_collect.datatype.spectrum.spe_collect import Spectrum_PygDataset
 from Data.data_collect.datatype.knowledge_map.k_p_collect import Knowledge_graph_PygDataset
 
-from task_data.graph.graph_task_dataset import MolOFADataset
+from task_data.graph.graph_task_dataset import Spec_Graph_Dataset
 from task_data.graph.graph_construct import ConstructMolCls
 from task_data.eval_data_construct import make_data,make_train_data,make_full_dm_list
 
@@ -29,6 +30,15 @@ from Light.data_module import DataModule
 from Light.metric import flat_binary_func,EvalKit
 from Light.template import ExpConfig,GraphPredLightning
 from pytorch_lightning.loggers import WandbLogger
+
+seed_value = 0
+np.random.seed(seed_value)
+random.seed(seed_value)
+os.environ['PYTHONHASHSEED'] = str(seed_value)
+torch.manual_seed(seed_value)
+torch.cuda.manual_seed(seed_value)
+torch.cuda.manual_seed_all(seed_value)
+torch.backends.cudnn.deterministic = True
 
 configs = []
 configs.append(
@@ -64,7 +74,7 @@ with open(os.path.join(exp_dir, "command"), "w") as f:  # 保存配置文件
     yaml.dump(mod_params, f)
 mod_params["exp_dir"] = exp_dir
 params = SimpleNamespace(**mod_params)
-utils.set_random_seed(params.seed)
+#utils.set_random_seed(params.seed)
 torch.set_float32_matmul_precision("high")
 params.log_project = "full_cdm"
 
@@ -87,32 +97,23 @@ if isinstance(params.task_names, str):
 else:
     task_names = params.task_names
 
-task_name = params.task_names[0]
-dataset_name = params.dataset_names[0]
+task_indexs = params.task_indexs[0]
+dataset_names = params.dataset_names[0]
 
 #*************************************************
 
 device, gpu_ids = utils.get_available_devices()
 gpu_size = len(gpu_ids)
 
-utils.set_random_seed(0)
+#utils.set_random_seed(0)
 
 encoder = SentenceEncoder(params.llm_name,batch_size = params.llm_b_size)
 
-dataset_output = MolOFADataset(name = task_name, load_texts = params.load_texts,encoder=encoder,force_reload = True)
-
-#*****************************************************
-# task_config = task_config_lookup[task_names[0]]
-# dataset_config = data_config_lookup[task_names[0]]
-task_config = utils.get_task_config(task_name,dataset_name,task_config_lookup)
-dataset_config = utils.get_dataset_config(task_name,dataset_name,data_config_lookup)
+task_config = utils.get_task_config(task_indexs,dataset_names,task_config_lookup)
+dataset_config = utils.get_dataset_config(task_indexs,dataset_names,data_config_lookup)
 
 Stage_Config = task_config['eval_set_constructs']
 stage_config = Stage_Config[0]
-
-
-
-
 # 数据集字典化
 test_dataset = {}   # 储存总数据集
 test_dataset_split = {}    # 储存划分子数据集的掩膜
@@ -120,48 +121,74 @@ test_preprocess_storage = {}   # 储存预处理结果
 test_datasets = {"train": [], "valid": [],"test": []}   # 储存子数据集
 test_stage_names = {"train": [], "valid": [], "test": []}
 
+dataset_output = eval(dataset_config['intergrate'])(
+                name = dataset_config['dataset_name'] + '-' + dataset_config['task_name'],  # 单类任务,后面会接收列表
+                index=task_indexs,
+                load_texts = params.load_texts,
+                encoder=encoder,
+                force_reload = True
+                )
+#*****************************************************
+
+
 result = []
 result_valid = []
 for i in Stage_Config:
-    if "dataset" not in i:  # 如果没有更换不同的数据集，此时默认的数据集为 config["dataset"]，即外层标的那个
-            i["dataset_names"] = task_config["dataset_name"]
-    test_dataset[dataset_config['dataset_name']] = dataset_output   # 加载总数据集
-    test_dataset_split, split_key = get_data_split(test_dataset,test_dataset_split,dataset_config)   # 根据stage划分不同的子数据集
-    stage_name = get_stage_name(i, dataset_config)    # 获取对应的子数据集名称
-    #if i["stage"] != "train" and stage_name in test_stage_names[i["stage"]]: #包括验证和测试的数据集只构建一次
-    if stage_name in test_stage_names[i["stage"]]: #子数据集只构建一次
-        result.append(test_stage_names[i["stage"]].index(stage_name)) # 返回这个eval数据集的索引
+    if "dataset_names" not in i:  # 如果没有更换不同的数据集，此时默认的数据集为 config["dataset"]，即外层标的那个
+        i["dataset_names"] = task_config["dataset_name"]
+    test_dataset[i["dataset_names"]] = dataset_output  # 加载总数据集
+
+    test_dataset_split, split_key = get_data_split(test_dataset, test_dataset_split,
+                                                   dataset_config)  # get the mask in test_dataset
+
+    stage_name = get_stage_name(i, dataset_config)  # 获取对应的子数据集名称
+
+    if i["stage"] != "train" and stage_name in test_stage_names[i["stage"]]:  # 验证和测试相关的子数据集只构建一次
+        result.append(test_stage_names[i["stage"]].index(stage_name))  # 返回这个eval数据集的索引
         if i["stage"] == "valid":
             result_valid.append([test_stage_names[i["stage"]].index(stage_name)])
         continue
-    test_preprocess_storage, split_key = get_global_data(test_dataset,test_dataset_split,test_preprocess_storage,dataset_config)
-    prompt_feats = dataset_output.get_prompt_text_feat(dataset_config["task_level"]) # Prompt的相关部分
-    data = ConstructMolCls(dataset = test_dataset[dataset_config['dataset_name']],
-                            split = test_dataset_split[split_key],
-                            split_name = i["split_name"],
-                            prompt_feats = prompt_feats,
-                            to_bin_cls_func = dataset_config["process_label_func"] if dataset_config.get("process_label_func") else None,
-                            task_level = dataset_config["task_level"],
-                            global_data = test_preprocess_storage[split_key],
-                            **dataset_config["args"],
-                            )
+
+    test_preprocess_storage, split_key = get_global_data(test_dataset, test_dataset_split, test_preprocess_storage,
+                                                         dataset_config)
+
+    prompt_feats = test_dataset[i["dataset_names"]].get_prompt_text_feat(
+        dataset_config["task_level"])  # 1.prompt_node;2.class_node;3.prompt_edge
+
+    label_process_func = dataset_config["process_label_func"] if dataset_config.get(
+        "process_label_func") else None  # Function used to process the label
+
+    data = eval(dataset_config["construct"])(
+        dataset=test_dataset[i['dataset_names']],
+        split=test_dataset_split[split_key],
+        split_name=i["split_name"],
+        prompt_feats=prompt_feats,
+        to_bin_cls_func=label_process_func,
+        task_level=dataset_config["task_level"],
+        global_data=test_preprocess_storage[split_key],
+        **dataset_config["args"],
+    )
+    # state_name: used for calling this valiable in monitor
+
     if i["stage"] == "train":
         test_datasets[i["stage"]].append(data)
     else:
-        eval_data = make_data(i["dataset_names"],
-                            data,
-                            i["split_name"],
-                            dataset_config["eval_metric"],
-                            dataset_config["eval_func"],
-                            dataset_config["num_classes"],
-                            batch_size=20,
-                            sample_size=-1,
-                            eval_mode=dataset_config["eval_mode"])
+        eval_data = make_data(
+            i["dataset_names"],
+            data,
+            i["split_name"],
+            dataset_config["eval_metric"],
+            dataset_config["eval_func"],
+            dataset_config["num_classes"],
+            eval_mode=dataset_config["eval_mode"],
+            batch_size=params.batch_size,
+            sample_size=params.eval_sample_size,
+        )
         test_datasets[i["stage"]].append(eval_data)
     test_stage_names[i["stage"]].append(stage_name)
     result.append(test_stage_names[i["stage"]].index(stage_name))
     if i["stage"] == "valid":
-        result_valid.append([test_stage_names[i["stage"]].index(stage_name)])
+        result_valid.append([test_stage_names[i["stage"]].index(stage_name)])  # 获取索引
 
 val_task_index_lst = result_valid
 val_pool_mode = task_config['eval_pool_mode']
@@ -184,7 +211,7 @@ gnn = PyGRGCNEdge(
 )
 
 bin_model = BinGraphAttModel if params.JK == "none" else BinGraphModel
-model = bin_model(model=gnn, llm_name=params.llm_name, outdim=out_dim, task_dim=len(params.task_names),
+model = bin_model(model=gnn, llm_name=params.llm_name, outdim=out_dim, task_dim=len(params.task_indexs),
                     add_rwpe=params.rwpe, dropout=params.dropout)
 
 #*************************************************************************************

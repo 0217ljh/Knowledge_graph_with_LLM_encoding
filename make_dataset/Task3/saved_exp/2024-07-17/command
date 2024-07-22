@@ -1,0 +1,35 @@
+JK: none
+batch_size: 20
+d_min_ratio:
+- 1
+d_multiple:
+- 1
+data_path: null
+dataset_names:
+- Small_Molecules
+dropout: 0.15
+emb_dim: 768
+eval_batch_size: 20
+eval_sample_size: -1
+exp_name: ''
+l2: 0
+llm_b_size: 1
+llm_name: ST
+load_best: false
+load_texts: false
+lr: 0.001
+max_nodes_per_hop: 100
+num_bases: 4
+num_epochs: 50
+num_layers: 7
+num_workers: 0
+offline_log: true
+rwpe: null
+seed: 0
+task_indexs:
+- Task3
+task_names:
+- arxiv
+test_rep: 1
+train_sample_size: -1
+val_interval: 1

@@ -6,11 +6,11 @@ lr: 0.001
 num_layers: 7
 JK : "none"
 num_workers: 0
-task_names:
-  - "Base_classification"
+task_indexs:
+  - "Task3"
 
 dataset_names:
- - "small_molecule"
+ - "Small_Molecules"
 
  
 d_multiple:

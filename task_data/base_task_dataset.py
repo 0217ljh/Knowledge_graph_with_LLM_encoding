@@ -21,6 +21,7 @@ class BasePygDataset(InMemoryDataset, ABC):
 
     def __init__(self, 
                  name: str, 
+                 index: str,
                  load_texts: bool, 
                  encoder: Optional[SentenceEncoder] = None,
                  root: str = "./cache_data", 
@@ -29,6 +30,7 @@ class BasePygDataset(InMemoryDataset, ABC):
                  **kwargs):
 
         self.name = name
+        self.task_index = index
         self.load_texts = load_texts
         self.root = root
         self.encoder = encoder   

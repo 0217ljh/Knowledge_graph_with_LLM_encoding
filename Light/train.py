@@ -16,7 +16,7 @@ def lightning_fit(
     profiler=None,
     cktp_prefix="",
     load_best=True,
-    prog_freq=20,
+    prog_freq=5,
     test_rep=1,
     save_model=True,
     prog_bar=True,
@@ -32,10 +32,13 @@ def lightning_fit(
     if save_model:   # 保存模型的配置
         callbacks.append(
             ModelCheckpoint(
-                monitor=metrics.val_metric,   # 'valid_small_molecule\\auc'
-                mode=metrics.eval_mode,       # 'max'
+                monitor=metrics.val_metric,   
+        # 'valid_small_molecule\\auc' ，需要监视的指标
+                mode=metrics.eval_mode,       
+        # 'max'，监视指标的最大值还是最小值.对于loss应使用min，对于accuracy应使用max
                 save_last=True,
                 filename=cktp_prefix + "{epoch}-{step}",
+                #dirpath='./test_save_model',
             )
         )
 
