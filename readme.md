@@ -1,11 +1,5 @@
-# 2024_7_15
+# 2024_7_22
 
-1.添加部分用于不同任务的接口
+1.Task3: Judegement完成。图级别任务完成
 
-* make_dataset/
-* Datasets/Data_for_different_Task
-
-2.提供对应的Config文件
-
-* Configs/data_config.yaml
-* Configs/task_config.yaml
+2.流程和框架的整体调整
