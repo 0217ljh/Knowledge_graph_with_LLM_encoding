@@ -7,7 +7,7 @@ num_layers: 7
 JK : "none"
 num_workers: 0
 task_indexs:
-  - "Task3"
+  - "Task2"
 
 dataset_names:
  - "Small_Molecules"

@@ -8,6 +8,26 @@ E2E-graph: &E2E-graph
     walk_length: null
   eval_mode: max
 
+E2E-edge: &E2E-edge
+  task_level: e2e_edge
+  dataset_splitter: sample_splitter_4edge
+  preprocess: null
+  intergrate: Spec_Edge_Dataset
+  construct: ConstructMolCls
+  args:
+    walk_length: null
+  eval_mode: max
+
+Small_Molecules_Task2: &Small_Molecules_Task2
+  <<: *E2E-edge
+  task_name: Peak_relationship_Judegement
+  task_index: Task2
+  dataset_name: Small_Molecules
+  process_label_func: process_binary_label
+  eval_metric: auc
+  eval_func: binary_auc_func
+  num_classes: -1
+
 Small_Molecules_Task3: &Small_Molecules_Task3
   <<: *E2E-graph
   task_name: Spectral_Judgment

@@ -72,7 +72,8 @@ class Spectrum_PygDataset(MSAPygDataset):
     
     def construct_graph(self, 
                                       data: Any, 
-                                      get_meta: Optional[bool] = True,
+                                      get_standrd_meta: Optional[bool] = True,
+                                      get_kwargs: Optional[bool] = False,
                                       #loader: Any, 
                                       **kwargs
                                       ) -> Any:
@@ -94,11 +95,14 @@ class Spectrum_PygDataset(MSAPygDataset):
                     format_df.loc[key[4:],'min_index'] = False
             graph = self.GP.construct_graph(format_df,name_data[i])
             
-            if get_meta:
+            if get_standrd_meta:
                 Graph_dict[name_data[i]] = {'graph':graph,
                                             'Mask':kwargs['kwargs'].get(name_data[i])['mask'],
                                             'Label':kwargs['kwargs'].get(name_data[i])['label']}
                 
+            elif get_kwargs:
+                Graph_dict[name_data[i]] = {'graph':graph,
+                                            'kwargs':[i for i in kwargs if i['Molecule']==name_data[i]] if kwargs else None}     
             else:
-                Graph_dict[name_data[i]] = graph
+                Graph_dict[name_data[i]] = {'graph':graph,}                               
         return Graph_dict

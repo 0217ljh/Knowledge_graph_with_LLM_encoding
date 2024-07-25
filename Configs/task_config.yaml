@@ -13,6 +13,28 @@ E2E-graph: &E2E-graph
     - stage: test
       split_name: valid
 
+E2E-edge: &E2E-edge
+  task_level: e2e_edge
+  eval_pool_mode: mean
+  eval_set_constructs:
+    - stage: train
+      split_name: train
+    - stage: valid
+      split_name: valid
+    - stage: test
+      split_name: test
+    - stage: test
+      split_name: train
+    - stage: test
+      split_name: valid
+
+Task2_Small_Molecules: &Task2_Small_Molecules
+# Tak3:Judegement of Spectral
+  <<: *E2E-edge
+  task_name: Peak_relationship_Judegement
+  task_index: Task2
+  dataset_name: Small_Molecules
+
 Task3_Small_Molecules: &Task3_Small_Molecules
 # Tak3:Judegement of Spectral
   <<: *E2E-graph
