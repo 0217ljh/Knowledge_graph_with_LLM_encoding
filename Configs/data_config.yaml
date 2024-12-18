@@ -1,0 +1,103 @@
+E2E-graph: &E2E-graph
+  task_level: e2e_graph
+  dataset_splitter: Graph_splitter
+  preprocess: null
+  intergrate: Spec_Graph_Dataset
+  construct: ConstructMolCls
+  args:
+    walk_length: null
+  eval_mode: max
+
+E2E-edge: &E2E-edge
+  task_level: e2e_edge
+  dataset_splitter: LinkSplitter
+  preprocess: LinkConstructGraph
+  intergrate: Spec_Edge_Dataset
+  construct: ConstructLinkCls
+  args:
+    walk_length: null
+  eval_mode: max
+
+E2E-node: &E2E-node
+  task_level: e2e_node
+  dataset_splitter: Node_Splitter
+  preprocess: null
+  intergrate: Spec_Node_Dataset
+  construct: ConstructNodeCls
+  args:
+    walk_length: null
+  eval_mode: max
+
+
+Small_Molecules_Task1: &Small_Molecules_Task1
+  <<: *E2E-node
+  task: Functional_group_Classification
+  task_index: Task1
+  dataset_name: Small_Molecules
+  process_label_func: process_int_label
+  eval_metric: acc
+  eval_func: classification_func
+  num_classes: 28
+
+
+Small_Molecules_Task2: &Small_Molecules_Task2
+  <<: *E2E-edge
+  task: Peak_relationship_Judegement
+  task_index: Task2
+  dataset_name: Small_Molecules
+  process_label_func: process_binary_label
+  eval_metric: auc
+  eval_func: binary_auc_func
+  num_classes: 2
+
+Small_Molecules_Task3: &Small_Molecules_Task3
+  <<: *E2E-graph
+  task: Spectral_Judgement
+  task_index: Task3
+  dataset_name: Small_Molecules
+  process_label_func: process_binary_label
+  eval_metric: auc
+  eval_func: binary_auc_func
+  num_classes: 2
+
+Small_Molecules_Task4: &Small_Molecules_Task4
+  <<: *E2E-graph
+  task: Spectral_Classification
+  task_index: Task4
+  dataset_name: Small_Molecules
+  process_label_func: process_binary_label
+  eval_metric: auc
+  eval_func: binary_auc_func
+  num_classes: 2
+
+
+Small_Molecules_Task4FS: &Small_Molecules_Task4FS
+  <<: *E2E-graph
+  task: Spectral_ClassificationFS
+  task_index: FS_Task4
+  dataset_name: Small_Molecules
+  process_label_func: process_binary_label
+  eval_metric: auc
+  eval_func: binary_auc_func
+  num_classes: 2
+
+Small_Molecules_Task3FS: &Small_Molecules_Task3FS
+  <<: *E2E-graph
+  task: Spectral_JudgementFS
+  task_index: FS_Task3
+  dataset_name: Small_Molecules
+  process_label_func: process_binary_label
+  eval_metric: auc
+  eval_func: binary_auc_func
+  num_classes: 2
+
+Small_Molecules_Task1FS: &Small_Molecules_Task1FS
+  <<: *E2E-node
+  task: Functional_group_ClassificationFS
+  dataset_splitter: Node_Splitter_FS
+  task_index: FS_Task1
+  dataset_name: Small_Molecules
+  process_label_func: process_int_label
+  eval_metric: acc
+  eval_func: classification_func
+  num_classes: 3

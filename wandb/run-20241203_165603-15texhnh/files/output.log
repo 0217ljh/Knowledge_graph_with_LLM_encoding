@@ -1,0 +1,10 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name     | Type             | Params | Mode
+------------------------------------------------------
+0 | model    | BinGraphAttModel | 28.9 M | train
+1 | eval_kit | EvalKit          | 0      | train
+------------------------------------------------------
+28.9 M    Trainable params
+0         Non-trainable params
+28.9 M    Total params
+115.704   Total estimated model params size (MB)

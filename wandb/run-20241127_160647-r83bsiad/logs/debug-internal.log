@@ -1,0 +1,138 @@
+2024-11-27 16:06:47,780 INFO    StreamThr :15476 [internal.py:wandb_internal():86] W&B internal server running at pid: 15476, started at: 2024-11-27 16:06:47.779177
+2024-11-27 16:06:47,782 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: status
+2024-11-27 16:06:47,794 INFO    WriterThread:15476 [datastore.py:open_for_write():87] open: .\wandb\run-20241127_160647-r83bsiad\run-r83bsiad.wandb
+2024-11-27 16:06:47,796 DEBUG   SenderThread:15476 [sender.py:send():379] send: header
+2024-11-27 16:06:47,797 DEBUG   SenderThread:15476 [sender.py:send():379] send: run
+2024-11-27 16:06:47,800 INFO    SenderThread:15476 [sender.py:_setup_resume():749] checking resume status for None/GNN_LLM_Spectrum/r83bsiad
+2024-11-27 16:06:52,854 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: keepalive
+2024-11-27 16:06:57,917 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: keepalive
+2024-11-27 16:07:02,979 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: keepalive
+2024-11-27 16:07:06,031 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: check_version
+2024-11-27 16:07:06,129 INFO    SenderThread:15476 [dir_watcher.py:__init__():211] watching files in: .\wandb\run-20241127_160647-r83bsiad\files
+2024-11-27 16:07:06,129 INFO    SenderThread:15476 [sender.py:_start_run_threads():1124] run started: r83bsiad with start time 1732694807.783149
+2024-11-27 16:07:06,130 DEBUG   SenderThread:15476 [sender.py:send_request():406] send_request: check_version
+2024-11-27 16:07:06,130 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: status_report
+2024-11-27 16:07:07,119 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: run_start
+2024-11-27 16:07:07,556 DEBUG   HandlerThread:15476 [system_info.py:__init__():26] System info init
+2024-11-27 16:07:07,556 DEBUG   HandlerThread:15476 [system_info.py:__init__():41] System info init done
+2024-11-27 16:07:07,556 INFO    HandlerThread:15476 [system_monitor.py:start():194] Starting system monitor
+2024-11-27 16:07:07,557 INFO    SystemMonitor:15476 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-11-27 16:07:07,557 INFO    HandlerThread:15476 [system_monitor.py:probe():214] Collecting system info
+2024-11-27 16:07:07,561 INFO    SystemMonitor:15476 [interfaces.py:start():190] Started cpu monitoring
+2024-11-27 16:07:07,562 INFO    SystemMonitor:15476 [interfaces.py:start():190] Started disk monitoring
+2024-11-27 16:07:07,563 INFO    SystemMonitor:15476 [interfaces.py:start():190] Started gpu monitoring
+2024-11-27 16:07:07,564 INFO    SystemMonitor:15476 [interfaces.py:start():190] Started memory monitoring
+2024-11-27 16:07:07,595 INFO    SystemMonitor:15476 [interfaces.py:start():190] Started network monitoring
+2024-11-27 16:07:07,624 DEBUG   HandlerThread:15476 [system_info.py:probe():150] Probing system
+2024-11-27 16:07:07,625 DEBUG   HandlerThread:15476 [gitlib.py:_init_repo():56] git repository is invalid
+2024-11-27 16:07:07,625 DEBUG   HandlerThread:15476 [system_info.py:probe():198] Probing system done
+2024-11-27 16:07:07,625 DEBUG   HandlerThread:15476 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.19045-SP0', 'python': '3.11.4', 'heartbeatAt': '2024-11-27T08:07:07.624124', 'startedAt': '2024-11-27T08:06:47.766149', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '<python with no main file>', 'codePathLocal': None, 'host': 'DESKTOP-AALVSLP', 'username': 'Raytine', 'executable': 'c:\\Users\\Raytine\\.conda\\envs\\pytorch\\python.exe', 'cpu_count': 6, 'cpu_count_logical': 12, 'cpu_freq': {'current': 3192.0, 'min': 0.0, 'max': 3192.0}, 'cpu_freq_per_core': [{'current': 3192.0, 'min': 0.0, 'max': 3192.0}], 'disk': {'/': {'total': 931.4960899353027, 'used': 914.2762031555176}}, 'gpu': 'NVIDIA GeForce RTX 2060', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 2060', 'memory_total': 6442450944}], 'memory': {'total': 15.933113098144531}}
+2024-11-27 16:07:07,625 INFO    HandlerThread:15476 [system_monitor.py:probe():224] Finished collecting system info
+2024-11-27 16:07:07,625 INFO    HandlerThread:15476 [system_monitor.py:probe():227] Publishing system info
+2024-11-27 16:07:07,626 DEBUG   HandlerThread:15476 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-11-27 16:07:08,157 INFO    Thread-16 :15476 [dir_watcher.py:_on_file_created():271] file/dir created: .\wandb\run-20241127_160647-r83bsiad\files\conda-environment.yaml
+2024-11-27 16:07:15,111 DEBUG   HandlerThread:15476 [system_info.py:_save_conda():222] Saving conda packages done
+2024-11-27 16:07:15,113 INFO    HandlerThread:15476 [system_monitor.py:probe():229] Finished publishing system info
+2024-11-27 16:07:15,133 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: status_report
+2024-11-27 16:07:15,133 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: keepalive
+2024-11-27 16:07:15,134 DEBUG   SenderThread:15476 [sender.py:send():379] send: files
+2024-11-27 16:07:15,134 INFO    SenderThread:15476 [sender.py:_save_file():1390] saving file wandb-metadata.json with policy now
+2024-11-27 16:07:15,247 INFO    Thread-16 :15476 [dir_watcher.py:_on_file_modified():288] file/dir modified: .\wandb\run-20241127_160647-r83bsiad\files\conda-environment.yaml
+2024-11-27 16:07:15,248 INFO    Thread-16 :15476 [dir_watcher.py:_on_file_created():271] file/dir created: .\wandb\run-20241127_160647-r83bsiad\files\wandb-metadata.json
+2024-11-27 16:07:15,600 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: python_packages
+2024-11-27 16:07:15,600 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: stop_status
+2024-11-27 16:07:15,601 DEBUG   SenderThread:15476 [sender.py:send_request():406] send_request: python_packages
+2024-11-27 16:07:15,602 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: internal_messages
+2024-11-27 16:07:15,604 DEBUG   SenderThread:15476 [sender.py:send_request():406] send_request: stop_status
+2024-11-27 16:07:16,260 INFO    Thread-16 :15476 [dir_watcher.py:_on_file_created():271] file/dir created: .\wandb\run-20241127_160647-r83bsiad\files\requirements.txt
+2024-11-27 16:07:16,998 INFO    wandb-upload_0:15476 [upload_job.py:push():131] Uploaded file C:\Users\Raytine\AppData\Local\Temp\tmpvaj9zm3nwandb\izxc7u6r-wandb-metadata.json
+2024-11-27 16:07:20,920 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: keepalive
+2024-11-27 16:07:25,983 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: keepalive
+2024-11-27 16:07:30,608 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: internal_messages
+2024-11-27 16:07:36,099 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: keepalive
+2024-11-27 16:07:38,647 DEBUG   SenderThread:15476 [sender.py:send():379] send: telemetry
+2024-11-27 16:07:38,647 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: status_report
+2024-11-27 16:07:38,647 DEBUG   SenderThread:15476 [sender.py:send():379] send: metric
+2024-11-27 16:07:38,648 DEBUG   SenderThread:15476 [sender.py:send():379] send: telemetry
+2024-11-27 16:07:38,648 DEBUG   SenderThread:15476 [sender.py:send():379] send: metric
+2024-11-27 16:07:38,648 WARNING SenderThread:15476 [sender.py:send_metric():1341] Seen metric with glob (shouldn't happen)
+2024-11-27 16:07:38,812 INFO    Thread-16 :15476 [dir_watcher.py:_on_file_created():271] file/dir created: .\wandb\run-20241127_160647-r83bsiad\files\output.log
+2024-11-27 16:07:39,688 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: partial_history
+2024-11-27 16:07:39,692 DEBUG   SenderThread:15476 [sender.py:send():379] send: metric
+2024-11-27 16:07:39,693 DEBUG   SenderThread:15476 [sender.py:send():379] send: metric
+2024-11-27 16:07:39,693 DEBUG   SenderThread:15476 [sender.py:send():379] send: metric
+2024-11-27 16:07:39,694 DEBUG   SenderThread:15476 [sender.py:send():379] send: history
+2024-11-27 16:07:39,694 DEBUG   SenderThread:15476 [sender.py:send_request():406] send_request: summary_record
+2024-11-27 16:07:39,696 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: partial_history
+2024-11-27 16:07:39,698 INFO    SenderThread:15476 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-11-27 16:07:39,698 DEBUG   SenderThread:15476 [sender.py:send():379] send: metric
+2024-11-27 16:07:39,698 DEBUG   SenderThread:15476 [sender.py:send():379] send: history
+2024-11-27 16:07:39,699 DEBUG   SenderThread:15476 [sender.py:send_request():406] send_request: summary_record
+2024-11-27 16:07:39,701 INFO    SenderThread:15476 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-11-27 16:07:39,833 INFO    Thread-16 :15476 [dir_watcher.py:_on_file_created():271] file/dir created: .\wandb\run-20241127_160647-r83bsiad\files\wandb-summary.json
+2024-11-27 16:07:40,893 INFO    Thread-16 :15476 [dir_watcher.py:_on_file_modified():288] file/dir modified: .\wandb\run-20241127_160647-r83bsiad\files\output.log
+2024-11-27 16:07:41,154 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: keepalive
+2024-11-27 16:07:43,744 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: status_report
+2024-11-27 16:07:45,624 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: internal_messages
+2024-11-27 16:07:48,801 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: status_report
+2024-11-27 16:07:51,318 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: keepalive
+2024-11-27 16:07:53,859 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: status_report
+2024-11-27 16:07:56,336 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: keepalive
+2024-11-27 16:07:58,917 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: status_report
+2024-11-27 16:07:59,155 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: partial_history
+2024-11-27 16:07:59,156 DEBUG   SenderThread:15476 [sender.py:send():379] send: history
+2024-11-27 16:07:59,157 DEBUG   SenderThread:15476 [sender.py:send_request():406] send_request: summary_record
+2024-11-27 16:07:59,161 INFO    SenderThread:15476 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-11-27 16:07:59,162 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: partial_history
+2024-11-27 16:07:59,163 DEBUG   SenderThread:15476 [sender.py:send():379] send: history
+2024-11-27 16:07:59,164 DEBUG   SenderThread:15476 [sender.py:send_request():406] send_request: summary_record
+2024-11-27 16:07:59,166 INFO    SenderThread:15476 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-11-27 16:07:59,677 INFO    Thread-16 :15476 [dir_watcher.py:_on_file_modified():288] file/dir modified: .\wandb\run-20241127_160647-r83bsiad\files\wandb-summary.json
+2024-11-27 16:08:00,632 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: internal_messages
+2024-11-27 16:08:00,678 INFO    Thread-16 :15476 [dir_watcher.py:_on_file_modified():288] file/dir modified: .\wandb\run-20241127_160647-r83bsiad\files\output.log
+2024-11-27 16:08:01,924 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: partial_history
+2024-11-27 16:08:01,925 DEBUG   SenderThread:15476 [sender.py:send():379] send: history
+2024-11-27 16:08:01,926 DEBUG   SenderThread:15476 [sender.py:send_request():406] send_request: summary_record
+2024-11-27 16:08:01,928 INFO    SenderThread:15476 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-11-27 16:08:02,779 INFO    Thread-16 :15476 [dir_watcher.py:_on_file_modified():288] file/dir modified: .\wandb\run-20241127_160647-r83bsiad\files\wandb-summary.json
+2024-11-27 16:08:02,780 INFO    Thread-16 :15476 [dir_watcher.py:_on_file_modified():288] file/dir modified: .\wandb\run-20241127_160647-r83bsiad\files\output.log
+2024-11-27 16:08:04,053 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: status_report
+2024-11-27 16:08:04,864 INFO    Thread-16 :15476 [dir_watcher.py:_on_file_modified():288] file/dir modified: .\wandb\run-20241127_160647-r83bsiad\files\output.log
+2024-11-27 16:08:06,454 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: keepalive
+2024-11-27 16:08:07,608 DEBUG   SystemMonitor:15476 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-11-27 16:08:07,610 DEBUG   SenderThread:15476 [sender.py:send():379] send: stats
+2024-11-27 16:08:09,628 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: status_report
+2024-11-27 16:08:11,133 INFO    Thread-16 :15476 [dir_watcher.py:_on_file_modified():288] file/dir modified: .\wandb\run-20241127_160647-r83bsiad\files\config.yaml
+2024-11-27 16:08:11,508 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: keepalive
+2024-11-27 16:08:15,211 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: status_report
+2024-11-27 16:08:15,648 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: internal_messages
+2024-11-27 16:08:19,489 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: partial_history
+2024-11-27 16:08:19,492 DEBUG   SenderThread:15476 [sender.py:send():379] send: metric
+2024-11-27 16:08:19,492 DEBUG   SenderThread:15476 [sender.py:send():379] send: metric
+2024-11-27 16:08:19,492 DEBUG   SenderThread:15476 [sender.py:send():379] send: metric
+2024-11-27 16:08:19,493 DEBUG   SenderThread:15476 [sender.py:send():379] send: metric
+2024-11-27 16:08:19,493 DEBUG   SenderThread:15476 [sender.py:send():379] send: metric
+2024-11-27 16:08:19,493 DEBUG   SenderThread:15476 [sender.py:send():379] send: history
+2024-11-27 16:08:19,493 DEBUG   SenderThread:15476 [sender.py:send_request():406] send_request: summary_record
+2024-11-27 16:08:19,495 INFO    SenderThread:15476 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-11-27 16:08:19,550 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: pause
+2024-11-27 16:08:19,550 INFO    HandlerThread:15476 [handler.py:handle_request_pause():708] stopping system metrics thread
+2024-11-27 16:08:19,550 INFO    HandlerThread:15476 [system_monitor.py:finish():203] Stopping system monitor
+2024-11-27 16:08:19,550 DEBUG   SystemMonitor:15476 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-11-27 16:08:19,558 DEBUG   SystemMonitor:15476 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-11-27 16:08:19,558 INFO    HandlerThread:15476 [interfaces.py:finish():202] Joined cpu monitor
+2024-11-27 16:08:19,559 INFO    HandlerThread:15476 [interfaces.py:finish():202] Joined disk monitor
+2024-11-27 16:08:19,620 INFO    HandlerThread:15476 [interfaces.py:finish():202] Joined gpu monitor
+2024-11-27 16:08:19,620 INFO    HandlerThread:15476 [interfaces.py:finish():202] Joined memory monitor
+2024-11-27 16:08:19,620 INFO    HandlerThread:15476 [interfaces.py:finish():202] Joined network monitor
+2024-11-27 16:08:19,621 DEBUG   SenderThread:15476 [sender.py:send():379] send: stats
+2024-11-27 16:08:20,474 INFO    Thread-16 :15476 [dir_watcher.py:_on_file_modified():288] file/dir modified: .\wandb\run-20241127_160647-r83bsiad\files\wandb-summary.json
+2024-11-27 16:08:20,630 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: status_report
+2024-11-27 16:08:21,627 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: keepalive
+2024-11-27 16:08:22,497 INFO    Thread-16 :15476 [dir_watcher.py:_on_file_modified():288] file/dir modified: .\wandb\run-20241127_160647-r83bsiad\files\output.log
+2024-11-27 16:08:25,693 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: status_report
+2024-11-27 16:08:26,692 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: keepalive
+2024-11-27 16:08:30,653 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: internal_messages
+2024-11-27 16:08:30,762 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: status_report
+2024-11-27 16:08:35,813 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: keepalive
+2024-11-27 16:08:35,828 DEBUG   HandlerThread:15476 [handler.py:handle_request():146] handle_request: status_report

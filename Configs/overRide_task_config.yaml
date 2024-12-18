@@ -1,0 +1,146 @@
+#Graph task config
+seed: 0
+emb_dim: 768
+num_epochs: 50
+batch_size: 1
+eval_batch_size: 1
+dropout: 0.005
+lr: 0.000001
+num_layers: 7
+JK : "none"
+num_workers: 0
+task:
+  - "Spectral_Judgement"
+  #- "Spectral_Classification"
+task_indexs:
+  - "Task3"
+  #- "Task4"
+llm_name : "ST"
+
+dataset_names:
+ - "Small_Molecules"
+
+d_multiple:
+  - 1
+
+d_min_ratio:
+  - 1
+
+
+# #Node task config
+# seed: 0
+# emb_dim: 768
+# num_epochs: 10
+# batch_size: 32
+# eval_batch_size: 32
+# dropout: 0.005
+# #lr: 0.000001
+# lr: 0.0001
+# num_layers: 7
+# JK : "none"
+# num_workers: 0
+# task:
+#   - "Functional_group_Classification"
+# task_indexs:
+#   - "Task1"
+
+# llm_name : "ST"
+
+# dataset_names:
+#  - "Small_Molecules"
+
+# d_multiple:
+#   - 1
+
+# d_min_ratio:
+#   - 1
+
+# #Link task config
+# seed: 0
+# emb_dim: 768
+# num_epochs: 5
+# batch_size: 1
+# eval_batch_size: 1
+# dropout: 0.005
+# #lr: 0.000001
+# lr: 0.000001
+# num_layers: 7
+# JK : "none"
+# num_workers: 0
+# task:
+#   - "Peak_relationship_Judegement"
+# task_indexs:
+#   - "Task2"
+
+# llm_name : "ST"
+
+# dataset_names:
+#  - "Small_Molecules"
+
+# d_multiple:
+#   - 1
+
+# d_min_ratio:
+#   - 1
+
+
+
+# #fs task3\4 config
+# seed: 0
+# emb_dim: 768
+# num_epochs: 10
+# batch_size: 1
+# eval_batch_size: 1
+# dropout: 0.05
+# #lr: 0.000001
+# lr: 0.00005
+# num_layers: 7
+# JK : "none"
+# num_workers: 0
+# task:
+#   #- "Spectral_ClassificationFS"
+#   - "Spectral_JudgementFS"
+# task_indexs:
+#   #- "FS_Task4"
+#   - "FS_Task3"
+# llm_name : "ST"
+
+# dataset_names:
+#  - "Small_Molecules"
+
+# d_multiple:
+#   - 1
+
+# d_min_ratio:
+#   - 1
+
+
+
+
+# #FS Node task config
+# seed: 0
+# emb_dim: 768
+# num_epochs: 10
+# batch_size: 1
+# eval_batch_size: 1
+# dropout: 0.005
+# #lr: 0.000001
+# lr: 0.000001
+# num_layers: 7
+# JK : "none"
+# num_workers: 0
+# task:
+#   - "Functional_group_ClassificationFS"
+# task_indexs:
+#   - "FS_Task1"
+
+# llm_name : "ST"
+
+# dataset_names:
+#  - "Small_Molecules"
+
+# d_multiple:
+#   - 1
+
+# d_min_ratio:
+#   - 1

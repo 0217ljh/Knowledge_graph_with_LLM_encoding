@@ -1,0 +1,21 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name     | Type          | Params | Mode
+---------------------------------------------------
+0 | model    | BinGraphModel | 27.7 M | train
+1 | eval_kit | EvalKit       | 0      | train
+---------------------------------------------------
+27.7 M    Trainable params
+0         Non-trainable params
+27.7 M    Total params
+110.985   Total estimated model params size (MB)
+C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\lightning\pytorch\trainer\connectors\data_connector.py:424: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\lightning\pytorch\trainer\connectors\data_connector.py:424: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+`Trainer.fit` stopped: `max_epochs=50` reached.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+valid_Small_Molecules\loss:0.079590±0.000000
+valid_Small_Molecules\acc:0.433333±0.000000
+C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\lightning\pytorch\trainer\connectors\data_connector.py:424: The 'test_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+test_Small_Molecules\loss/dataloader_idx_0:0.103166±0.000000
+test_Small_Molecules\acc:0.422303±0.000000
+train_Small_Molecules\acc:0.448980±0.000000

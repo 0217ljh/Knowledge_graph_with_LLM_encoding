@@ -1,0 +1,23 @@
+2024-12-12 14:50:14,557 INFO    StreamThr :13764 [internal.py:wandb_internal():86] W&B internal server running at pid: 13764, started at: 2024-12-12 14:50:14.555485
+2024-12-12 14:50:14,559 DEBUG   HandlerThread:13764 [handler.py:handle_request():146] handle_request: status
+2024-12-12 14:50:14,572 INFO    WriterThread:13764 [datastore.py:open_for_write():87] open: .\wandb\run-20241212_145014-sj0mzdv1\run-sj0mzdv1.wandb
+2024-12-12 14:50:14,573 DEBUG   SenderThread:13764 [sender.py:send():379] send: header
+2024-12-12 14:50:14,575 DEBUG   SenderThread:13764 [sender.py:send():379] send: run
+2024-12-12 14:50:14,579 INFO    SenderThread:13764 [sender.py:_setup_resume():749] checking resume status for None/GNN_LLM_Spectrum/sj0mzdv1
+2024-12-12 14:50:16,530 INFO    SenderThread:13764 [dir_watcher.py:__init__():211] watching files in: .\wandb\run-20241212_145014-sj0mzdv1\files
+2024-12-12 14:50:16,530 INFO    SenderThread:13764 [sender.py:_start_run_threads():1124] run started: sj0mzdv1 with start time 1733986214.559493
+2024-12-12 14:50:16,563 INFO    StreamThr :13764 [internal.py:wandb_internal():86] W&B internal server running at pid: 13764, started at: 2024-12-12 14:50:16.562714
+2024-12-12 14:50:16,565 DEBUG   HandlerThread:13764 [handler.py:handle_request():146] handle_request: status
+2024-12-12 14:50:16,570 INFO    WriterThread:13764 [datastore.py:open_for_write():87] open: .\wandb\run-20241212_145016-kdabvzy7\run-kdabvzy7.wandb
+2024-12-12 14:50:16,572 DEBUG   SenderThread:13764 [sender.py:send():379] send: header
+2024-12-12 14:50:16,573 DEBUG   SenderThread:13764 [sender.py:send():379] send: run
+2024-12-12 14:50:16,577 INFO    SenderThread:13764 [sender.py:_setup_resume():749] checking resume status for None/GNN_LLM_Spectrum/kdabvzy7
+2024-12-12 14:50:18,728 INFO    SenderThread:13764 [dir_watcher.py:__init__():211] watching files in: .\wandb\run-20241212_145016-kdabvzy7\files
+2024-12-12 14:50:18,728 INFO    SenderThread:13764 [sender.py:_start_run_threads():1124] run started: kdabvzy7 with start time 1733986216.561683
+2024-12-12 14:50:18,743 DEBUG   HandlerThread:13764 [handler.py:handle_request():146] handle_request: check_version
+2024-12-12 14:50:18,744 DEBUG   SenderThread:13764 [sender.py:send_request():406] send_request: check_version
+2024-12-12 14:50:19,569 DEBUG   HandlerThread:13764 [handler.py:handle_request():146] handle_request: status_report
+2024-12-12 14:50:21,854 DEBUG   HandlerThread:13764 [handler.py:handle_request():146] handle_request: status_report
+2024-12-12 14:50:23,787 DEBUG   HandlerThread:13764 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-12 14:50:24,630 DEBUG   HandlerThread:13764 [handler.py:handle_request():146] handle_request: status_report
+2024-12-12 14:50:26,896 DEBUG   HandlerThread:13764 [handler.py:handle_request():146] handle_request: status_report

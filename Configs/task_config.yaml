@@ -1,0 +1,116 @@
+E2E-graph: &E2E-graph
+  task_level: e2e_graph
+  eval_pool_mode: mean
+  eval_set_constructs:
+    - stage: train
+      split_name: train
+      dataset: 'Small_Molecules'
+    - stage: valid
+      split_name: valid
+      dataset: 'Small_Molecules'
+    - stage: test
+      split_name: test
+      dataset: 'Small_Molecules'
+    - stage: test
+      split_name: train
+      dataset: 'Small_Molecules'
+    - stage: test
+      split_name: valid
+      dataset: 'Small_Molecules'
+
+E2E-edge: &E2E-edge
+  task_level: e2e_edge
+  eval_pool_mode: mean
+  eval_set_constructs:
+    - stage: train
+      split_name: train
+      dataset: 'Small_Molecules'
+    - stage: valid
+      split_name: valid
+      dataset: 'Small_Molecules'
+    - stage: test
+      split_name: test
+      dataset: 'Small_Molecules'
+    - stage: test
+      split_name: train
+      dataset: 'Small_Molecules'
+    - stage: test
+      split_name: valid
+      dataset: 'Small_Molecules'
+
+E2E-node: &E2E-node
+  task_level: e2e_node
+  eval_pool_mode: mean
+  eval_set_constructs:
+    - stage: train
+      split_name: train
+      dataset: 'Small_Molecules'
+    - stage: valid
+      split_name: valid
+      dataset: 'Small_Molecules'
+    - stage: test
+      split_name: test
+      dataset: 'Small_Molecules'
+    - stage: test
+      split_name: train
+      dataset: 'Small_Molecules'
+    - stage: test
+      split_name: valid
+      dataset: 'Small_Molecules'
+
+
+
+Task1_Small_Molecules: &Task1_Small_Molecules
+  <<: *E2E-node
+  task: Functional_group_Classification
+  task_index: Task1
+  dataset: Small_Molecules
+
+Task2_Small_Molecules: &Task2_Small_Molecules
+  <<: *E2E-edge
+  task: Peak_relationship_Judegement
+  task_index: Task2
+  dataset: Small_Molecules
+
+Task3_Small_Molecules: &Task3_Small_Molecules
+# Tak3:Judegement of Spectral
+  <<: *E2E-graph
+  task: Spectral_Judgement
+  task_index: Task3
+  dataset: Small_Molecules
+
+Task4_Small_Molecules: &Task4_Small_Molecules
+# Tak4:classification
+  <<: *E2E-graph
+  task: Spectral_Classification
+  task_index: Task4
+  dataset: Small_Molecules
+
+Task1_Small_MoleculesFS: &Task1_Small_MoleculesFS
+  <<: *E2E-node
+  task: Functional_group_ClassificationFS
+  task_index: FS_Task1
+  dataset: Small_Molecules
+
+Task2_Small_MoleculesFS: &Task2_Small_MoleculesFS
+  <<: *E2E-edge
+  task: Peak_relationship_Judegement
+  task_index: FS_Task2
+  dataset: Small_Molecules
+
+Task4_Small_MoleculesFS: &Task4_Small_MoleculesFS
+# Tak4:classification
+  <<: *E2E-graph
+  task: Spectral_ClassificationFS
+  task_index: FS_Task4
+  dataset: Small_Molecules
+
+Task3_Small_MoleculesFS: &Task3_Small_MoleculesFS
+# Tak3:Judegement of Spectral
+  <<: *E2E-graph
+  task: Spectral_JudgementFS
+  task_index: FS_Task3
+  dataset: Small_Molecules
+
+
+

@@ -1,0 +1,52 @@
+{
+    "os": "Windows-10-10.0.19045-SP0",
+    "python": "3.11.4",
+    "heartbeatAt": "2024-12-18T00:52:46.913997",
+    "startedAt": "2024-12-18T00:52:43.788482",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "<python with no main file>",
+    "codePathLocal": null,
+    "git": {
+        "remote": "https://github.com/Jeff11272/LLM_GNN_SPMUT.git",
+        "commit": null
+    },
+    "email": null,
+    "root": "F:/Code/Knowledge_graph_with_LLM_encoding-main",
+    "host": "DESKTOP-AALVSLP",
+    "username": "Raytine",
+    "executable": "c:\\Users\\Raytine\\.conda\\envs\\pytorch\\python.exe",
+    "cpu_count": 6,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 3192.0,
+        "min": 0.0,
+        "max": 3192.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3192.0,
+            "min": 0.0,
+            "max": 3192.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 931.4960899353027,
+            "used": 898.0344886779785
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 2060",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 2060",
+            "memory_total": 6442450944
+        }
+    ],
+    "memory": {
+        "total": 15.933113098144531
+    }
+}

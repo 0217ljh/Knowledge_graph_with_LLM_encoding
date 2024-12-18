@@ -1,0 +1,25 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name     | Type             | Params | Mode
+------------------------------------------------------
+0 | model    | BinGraphAttModel | 28.9 M | train
+1 | eval_kit | EvalKit          | 0      | train
+------------------------------------------------------
+28.9 M    Trainable params
+0         Non-trainable params
+28.9 M    Total params
+115.704   Total estimated model params size (MB)
+C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\lightning\pytorch\trainer\connectors\data_connector.py:424: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\torchmetrics\utilities\prints.py:43: UserWarning: No positive samples in targets, true positive value should be meaningless. Returning zero tensor in true positive score
+  warnings.warn(*args, **kwargs)  # noqa: B028
+C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\lightning\pytorch\trainer\connectors\data_connector.py:424: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+f:\Code\Knowledge_graph_with_LLM_encoding-main\task_data\base_construct.py:105: RuntimeWarning: invalid value encountered in divide
+  mean_improvement = (((metric_vals - mean) / mean) * mode).sum()
+`Trainer.fit` stopped: `max_epochs=50` reached.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\lightning\pytorch\trainer\connectors\data_connector.py:424: The 'test_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+valid_Small_Molecules\loss:0.740916±0.000000
+valid_Small_Molecules\auc:0.000000±0.000000
+test_Small_Molecules\loss/dataloader_idx_0:0.718712±0.000000
+test_Small_Molecules\auc:0.000000±0.000000
+train_Small_Molecules\auc:0.075325±0.000000

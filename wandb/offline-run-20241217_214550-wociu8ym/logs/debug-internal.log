@@ -1,0 +1,44 @@
+2024-12-17 21:45:50,943 INFO    StreamThr :15916 [internal.py:wandb_internal():86] W&B internal server running at pid: 15916, started at: 2024-12-17 21:45:50.942441
+2024-12-17 21:45:50,945 DEBUG   HandlerThread:15916 [handler.py:handle_request():146] handle_request: status
+2024-12-17 21:45:50,954 INFO    WriterThread:15916 [datastore.py:open_for_write():87] open: .\wandb\offline-run-20241217_214550-wociu8ym\run-wociu8ym.wandb
+2024-12-17 21:45:50,969 DEBUG   HandlerThread:15916 [handler.py:handle_request():146] handle_request: run_start
+2024-12-17 21:45:51,047 DEBUG   HandlerThread:15916 [system_info.py:__init__():26] System info init
+2024-12-17 21:45:51,048 DEBUG   HandlerThread:15916 [system_info.py:__init__():41] System info init done
+2024-12-17 21:45:51,048 INFO    HandlerThread:15916 [system_monitor.py:start():194] Starting system monitor
+2024-12-17 21:45:51,048 INFO    SystemMonitor:15916 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-12-17 21:45:51,049 INFO    HandlerThread:15916 [system_monitor.py:probe():214] Collecting system info
+2024-12-17 21:45:51,052 INFO    SystemMonitor:15916 [interfaces.py:start():190] Started cpu monitoring
+2024-12-17 21:45:51,053 INFO    SystemMonitor:15916 [interfaces.py:start():190] Started disk monitoring
+2024-12-17 21:45:51,054 INFO    SystemMonitor:15916 [interfaces.py:start():190] Started gpu monitoring
+2024-12-17 21:45:51,054 INFO    SystemMonitor:15916 [interfaces.py:start():190] Started memory monitoring
+2024-12-17 21:45:51,111 INFO    SystemMonitor:15916 [interfaces.py:start():190] Started network monitoring
+2024-12-17 21:45:51,112 DEBUG   HandlerThread:15916 [system_info.py:probe():150] Probing system
+2024-12-17 21:45:51,113 DEBUG   HandlerThread:15916 [gitlib.py:_init_repo():56] git repository is invalid
+2024-12-17 21:45:51,113 DEBUG   HandlerThread:15916 [system_info.py:probe():198] Probing system done
+2024-12-17 21:45:51,113 DEBUG   HandlerThread:15916 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.19045-SP0', 'python': '3.11.4', 'heartbeatAt': '2024-12-17T13:45:51.112450', 'startedAt': '2024-12-17T13:45:50.925469', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '<python with no main file>', 'codePathLocal': None, 'host': 'DESKTOP-AALVSLP', 'username': 'Raytine', 'executable': 'c:\\Users\\Raytine\\.conda\\envs\\pytorch\\python.exe', 'cpu_count': 6, 'cpu_count_logical': 12, 'cpu_freq': {'current': 3192.0, 'min': 0.0, 'max': 3192.0}, 'cpu_freq_per_core': [{'current': 3192.0, 'min': 0.0, 'max': 3192.0}], 'disk': {'/': {'total': 931.4960899353027, 'used': 894.8004035949707}}, 'gpu': 'NVIDIA GeForce RTX 2060', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 2060', 'memory_total': 6442450944}], 'memory': {'total': 15.933113098144531}}
+2024-12-17 21:45:51,113 INFO    HandlerThread:15916 [system_monitor.py:probe():224] Finished collecting system info
+2024-12-17 21:45:51,113 INFO    HandlerThread:15916 [system_monitor.py:probe():227] Publishing system info
+2024-12-17 21:45:51,113 DEBUG   HandlerThread:15916 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-12-17 21:45:58,672 DEBUG   HandlerThread:15916 [system_info.py:_save_conda():222] Saving conda packages done
+2024-12-17 21:45:58,674 INFO    HandlerThread:15916 [system_monitor.py:probe():229] Finished publishing system info
+2024-12-17 21:45:58,692 DEBUG   HandlerThread:15916 [handler.py:handle_request():146] handle_request: status_report
+2024-12-17 21:45:58,692 DEBUG   HandlerThread:15916 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-17 21:45:58,692 DEBUG   SenderThread:15916 [sender.py:send_request():406] send_request: status_report
+2024-12-17 21:45:59,073 DEBUG   HandlerThread:15916 [handler.py:handle_request():146] handle_request: python_packages
+2024-12-17 21:45:59,418 DEBUG   HandlerThread:15916 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-17 21:45:59,800 DEBUG   HandlerThread:15916 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-17 21:45:59,856 DEBUG   HandlerThread:15916 [handler.py:handle_request():146] handle_request: pause
+2024-12-17 21:45:59,856 INFO    HandlerThread:15916 [handler.py:handle_request_pause():708] stopping system metrics thread
+2024-12-17 21:45:59,856 INFO    HandlerThread:15916 [system_monitor.py:finish():203] Stopping system monitor
+2024-12-17 21:45:59,857 DEBUG   SystemMonitor:15916 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-12-17 21:45:59,864 INFO    HandlerThread:15916 [interfaces.py:finish():202] Joined cpu monitor
+2024-12-17 21:45:59,865 DEBUG   SystemMonitor:15916 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-12-17 21:45:59,865 INFO    HandlerThread:15916 [interfaces.py:finish():202] Joined disk monitor
+2024-12-17 21:45:59,865 DEBUG   SystemMonitor:15916 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-12-17 21:45:59,926 INFO    HandlerThread:15916 [interfaces.py:finish():202] Joined gpu monitor
+2024-12-17 21:45:59,927 INFO    HandlerThread:15916 [interfaces.py:finish():202] Joined memory monitor
+2024-12-17 21:45:59,927 INFO    HandlerThread:15916 [interfaces.py:finish():202] Joined network monitor
+2024-12-17 21:46:01,712 DEBUG   HandlerThread:15916 [handler.py:handle_request():146] handle_request: status_report
+2024-12-17 21:46:01,712 DEBUG   SenderThread:15916 [sender.py:send_request():406] send_request: status_report
+2024-12-17 21:46:06,745 DEBUG   HandlerThread:15916 [handler.py:handle_request():146] handle_request: status_report
+2024-12-17 21:46:06,745 DEBUG   SenderThread:15916 [sender.py:send_request():406] send_request: status_report

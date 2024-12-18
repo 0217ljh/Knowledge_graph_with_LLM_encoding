@@ -1,0 +1,106 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name     | Type             | Params | Mode
+------------------------------------------------------
+0 | model    | BinGraphAttModel | 28.9 M | train
+1 | eval_kit | EvalKit          | 0      | train
+------------------------------------------------------
+28.9 M    Trainable params
+0         Non-trainable params
+28.9 M    Total params
+115.704   Total estimated model params size (MB)
+C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\lightning\pytorch\trainer\connectors\data_connector.py:424: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\lightning\pytorch\trainer\connectors\data_connector.py:424: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+`Trainer.fit` stopped: `max_epochs=50` reached.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+valid_small_molecule\loss:0.220232±0.000000
+valid_small_molecule\auc:0.957731±0.000000
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\lightning\pytorch\trainer\connectors\data_connector.py:424: The 'test_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+test_small_molecule\loss/dataloader_idx_0:0.147633±0.000000
+test_small_molecule\auc:0.989247±0.000000
+train_small_molecule\auc:0.988032±0.000000
+valid_small_molecule\auc:0.957731±0.000000
+c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\torchmetrics\utilities\prints.py:43: UserWarning: No negative samples in targets, false positive value should be meaningless. Returning zero tensor in false positive score
+  warnings.warn(*args, **kwargs)  # noqa: B028
+  5%|▍         | 14/306 [00:00<00:04, 65.96it/s]
+
+
+
+100%|██████████| 306/306 [00:04<00:00, 69.00it/s]
+Name  : 样本名称
+edge_ID  : 边标签
+edge_attributes  : 边属性
+edge_index  : 邻接矩阵
+edge_text_feat  : 边文本信息矩阵
+node_ID  : 节点标签
+node_attributes  : 节点属性
+node_name  : 节点名称
+node_text_feat  : 节点文本信息矩阵
+x  : 节点记号
+y  : 编码分类标签
+y_label  : 原始分类标签
+Small_Molecules
+[0, 0, 0, 1, 2]
+ [[0]]
+ mean
+<class 'Models.models.BinGraphAttModel'>
+<bound method GraphprocessDataset.get_collate_fn of <task_data.graph.graph_construct.GraphListHierDataset object at 0x0000022790EB39D0>>
+<bound method GraphprocessDataset.get_collate_fn of <task_data.graph.graph_construct.GraphListHierDataset object at 0x0000022790F94A90>>
+<bound method GraphprocessDataset.get_collate_fn of <task_data.graph.graph_construct.GraphListHierDataset object at 0x000002279A93E2D0>>
+<task_data.eval_data_construct.DataWithMeta object at 0x00000227825786D0>
+2
+<task_data.eval_data_construct.DataWithMeta object at 0x000002279173DE50>
+2
+<task_data.eval_data_construct.DataWithMeta object at 0x00000227917B4290>
+2
+<task_data.eval_data_construct.DataWithMeta object at 0x0000022782578F10>
+2
+['train_eval']
+<bound method EvalKit.has_eval_state of EvalKit(
+  (loss): BCEWithLogitsLoss()
+  (evlters): ModuleDict(
+    (valid_small_molecule): BinaryAUROC()
+    (test_small_molecule): BinaryAUROC()
+    (train_small_molecule): BinaryAUROC()
+  )
+)>
+BinGraphAttModel(
+  (model): PyGRGCNEdge(
+    (conv): ModuleList(
+      (0-6): 7 x RGCNEdgeConv(768, 768)
+    )
+    (batch_norm): ModuleList(
+      (0-6): 7 x BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (llm_proj): Linear(in_features=768, out_features=768, bias=True)
+  (mlp): MLP(768, 1536, 768, 1)
+  (att): SingleHeadAtt()
+)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\pytorch_lightning\loggers\wandb.py:396: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name     | Type             | Params | Mode
+------------------------------------------------------
+0 | model    | BinGraphAttModel | 28.9 M | train
+1 | eval_kit | EvalKit          | 0      | train
+------------------------------------------------------
+28.9 M    Trainable params
+0         Non-trainable params
+28.9 M    Total params
+115.704   Total estimated model params size (MB)
+C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\lightning\pytorch\trainer\connectors\data_connector.py:424: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\lightning\pytorch\trainer\connectors\data_connector.py:424: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+`Trainer.fit` stopped: `max_epochs=50` reached.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+valid_small_molecule\loss:0.237770±0.000000
+valid_small_molecule\auc:0.964405±0.000000
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\lightning\pytorch\trainer\connectors\data_connector.py:424: The 'test_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\torchmetrics\utilities\prints.py:43: UserWarning: No positive samples in targets, true positive value should be meaningless. Returning zero tensor in true positive score
+  warnings.warn(*args, **kwargs)  # noqa: B028
+test_small_molecule\loss/dataloader_idx_0:0.211424±0.000000
+test_small_molecule\auc:0.984360±0.000000
+train_small_molecule\auc:0.982592±0.000000

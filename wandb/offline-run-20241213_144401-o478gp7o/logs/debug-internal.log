@@ -1,0 +1,68 @@
+2024-12-13 14:44:01,459 INFO    StreamThr :22240 [internal.py:wandb_internal():86] W&B internal server running at pid: 22240, started at: 2024-12-13 14:44:01.458594
+2024-12-13 14:44:01,461 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: status
+2024-12-13 14:44:01,469 INFO    WriterThread:22240 [datastore.py:open_for_write():87] open: .\wandb\offline-run-20241213_144401-o478gp7o\run-o478gp7o.wandb
+2024-12-13 14:44:01,485 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: run_start
+2024-12-13 14:44:01,567 DEBUG   HandlerThread:22240 [system_info.py:__init__():26] System info init
+2024-12-13 14:44:01,567 DEBUG   HandlerThread:22240 [system_info.py:__init__():41] System info init done
+2024-12-13 14:44:01,567 INFO    HandlerThread:22240 [system_monitor.py:start():194] Starting system monitor
+2024-12-13 14:44:01,568 INFO    SystemMonitor:22240 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-12-13 14:44:01,568 INFO    HandlerThread:22240 [system_monitor.py:probe():214] Collecting system info
+2024-12-13 14:44:01,571 INFO    SystemMonitor:22240 [interfaces.py:start():190] Started cpu monitoring
+2024-12-13 14:44:01,572 INFO    SystemMonitor:22240 [interfaces.py:start():190] Started disk monitoring
+2024-12-13 14:44:01,573 INFO    SystemMonitor:22240 [interfaces.py:start():190] Started gpu monitoring
+2024-12-13 14:44:01,574 INFO    SystemMonitor:22240 [interfaces.py:start():190] Started memory monitoring
+2024-12-13 14:44:01,603 INFO    SystemMonitor:22240 [interfaces.py:start():190] Started network monitoring
+2024-12-13 14:44:01,632 DEBUG   HandlerThread:22240 [system_info.py:probe():150] Probing system
+2024-12-13 14:44:01,634 DEBUG   HandlerThread:22240 [gitlib.py:_init_repo():56] git repository is invalid
+2024-12-13 14:44:01,634 DEBUG   HandlerThread:22240 [system_info.py:probe():198] Probing system done
+2024-12-13 14:44:01,634 DEBUG   HandlerThread:22240 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.19045-SP0', 'python': '3.11.4', 'heartbeatAt': '2024-12-13T06:44:01.632282', 'startedAt': '2024-12-13T06:44:01.443592', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '<python with no main file>', 'codePathLocal': None, 'host': 'DESKTOP-AALVSLP', 'username': 'Raytine', 'executable': 'c:\\Users\\Raytine\\.conda\\envs\\pytorch\\python.exe', 'cpu_count': 6, 'cpu_count_logical': 12, 'cpu_freq': {'current': 3192.0, 'min': 0.0, 'max': 3192.0}, 'cpu_freq_per_core': [{'current': 3192.0, 'min': 0.0, 'max': 3192.0}], 'disk': {'/': {'total': 931.4960899353027, 'used': 903.5731964111328}}, 'gpu': 'NVIDIA GeForce RTX 2060', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 2060', 'memory_total': 6442450944}], 'memory': {'total': 15.933113098144531}}
+2024-12-13 14:44:01,634 INFO    HandlerThread:22240 [system_monitor.py:probe():224] Finished collecting system info
+2024-12-13 14:44:01,634 INFO    HandlerThread:22240 [system_monitor.py:probe():227] Publishing system info
+2024-12-13 14:44:01,634 DEBUG   HandlerThread:22240 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-12-13 14:44:09,324 DEBUG   HandlerThread:22240 [system_info.py:_save_conda():222] Saving conda packages done
+2024-12-13 14:44:09,326 INFO    HandlerThread:22240 [system_monitor.py:probe():229] Finished publishing system info
+2024-12-13 14:44:09,350 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: status_report
+2024-12-13 14:44:09,351 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-13 14:44:09,351 DEBUG   SenderThread:22240 [sender.py:send_request():406] send_request: status_report
+2024-12-13 14:44:09,769 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: python_packages
+2024-12-13 14:44:10,403 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:10,409 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:10,626 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:10,631 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:10,854 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:10,860 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:11,073 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:11,079 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:11,304 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:11,309 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:11,543 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:11,548 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:11,784 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:11,789 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:12,019 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:12,024 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:12,257 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:12,262 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:12,386 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: status_report
+2024-12-13 14:44:12,386 DEBUG   SenderThread:22240 [sender.py:send_request():406] send_request: status_report
+2024-12-13 14:44:12,493 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:12,497 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:12,796 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:13,202 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 14:44:13,281 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: pause
+2024-12-13 14:44:13,281 INFO    HandlerThread:22240 [handler.py:handle_request_pause():708] stopping system metrics thread
+2024-12-13 14:44:13,281 INFO    HandlerThread:22240 [system_monitor.py:finish():203] Stopping system monitor
+2024-12-13 14:44:13,281 DEBUG   SystemMonitor:22240 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-12-13 14:44:13,282 INFO    HandlerThread:22240 [interfaces.py:finish():202] Joined cpu monitor
+2024-12-13 14:44:13,292 DEBUG   SystemMonitor:22240 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-12-13 14:44:13,292 INFO    HandlerThread:22240 [interfaces.py:finish():202] Joined disk monitor
+2024-12-13 14:44:13,292 DEBUG   SystemMonitor:22240 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-12-13 14:44:13,360 INFO    HandlerThread:22240 [interfaces.py:finish():202] Joined gpu monitor
+2024-12-13 14:44:13,360 INFO    HandlerThread:22240 [interfaces.py:finish():202] Joined memory monitor
+2024-12-13 14:44:13,360 INFO    HandlerThread:22240 [interfaces.py:finish():202] Joined network monitor
+2024-12-13 14:44:17,450 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: status_report
+2024-12-13 14:44:17,450 DEBUG   SenderThread:22240 [sender.py:send_request():406] send_request: status_report
+2024-12-13 14:44:22,512 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: status_report
+2024-12-13 14:44:22,512 DEBUG   SenderThread:22240 [sender.py:send_request():406] send_request: status_report
+2024-12-13 14:44:27,569 DEBUG   HandlerThread:22240 [handler.py:handle_request():146] handle_request: status_report
+2024-12-13 14:44:27,569 DEBUG   SenderThread:22240 [sender.py:send_request():406] send_request: status_report

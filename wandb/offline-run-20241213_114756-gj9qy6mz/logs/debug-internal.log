@@ -1,0 +1,60 @@
+2024-12-13 11:47:56,313 INFO    StreamThr :1592 [internal.py:wandb_internal():86] W&B internal server running at pid: 1592, started at: 2024-12-13 11:47:56.312298
+2024-12-13 11:47:56,316 DEBUG   HandlerThread:1592 [handler.py:handle_request():146] handle_request: status
+2024-12-13 11:47:56,324 INFO    WriterThread:1592 [datastore.py:open_for_write():87] open: .\wandb\offline-run-20241213_114756-gj9qy6mz\run-gj9qy6mz.wandb
+2024-12-13 11:47:56,352 DEBUG   HandlerThread:1592 [handler.py:handle_request():146] handle_request: run_start
+2024-12-13 11:47:56,437 DEBUG   HandlerThread:1592 [system_info.py:__init__():26] System info init
+2024-12-13 11:47:56,437 DEBUG   HandlerThread:1592 [system_info.py:__init__():41] System info init done
+2024-12-13 11:47:56,438 INFO    HandlerThread:1592 [system_monitor.py:start():194] Starting system monitor
+2024-12-13 11:47:56,438 INFO    SystemMonitor:1592 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-12-13 11:47:56,438 INFO    HandlerThread:1592 [system_monitor.py:probe():214] Collecting system info
+2024-12-13 11:47:56,442 INFO    SystemMonitor:1592 [interfaces.py:start():190] Started cpu monitoring
+2024-12-13 11:47:56,443 INFO    SystemMonitor:1592 [interfaces.py:start():190] Started disk monitoring
+2024-12-13 11:47:56,444 INFO    SystemMonitor:1592 [interfaces.py:start():190] Started gpu monitoring
+2024-12-13 11:47:56,444 INFO    SystemMonitor:1592 [interfaces.py:start():190] Started memory monitoring
+2024-12-13 11:47:56,472 INFO    SystemMonitor:1592 [interfaces.py:start():190] Started network monitoring
+2024-12-13 11:47:56,501 DEBUG   HandlerThread:1592 [system_info.py:probe():150] Probing system
+2024-12-13 11:47:56,503 DEBUG   HandlerThread:1592 [gitlib.py:_init_repo():56] git repository is invalid
+2024-12-13 11:47:56,503 DEBUG   HandlerThread:1592 [system_info.py:probe():198] Probing system done
+2024-12-13 11:47:56,503 DEBUG   HandlerThread:1592 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.19045-SP0', 'python': '3.11.4', 'heartbeatAt': '2024-12-13T03:47:56.502320', 'startedAt': '2024-12-13T03:47:56.292296', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '<python with no main file>', 'codePathLocal': None, 'host': 'DESKTOP-AALVSLP', 'username': 'Raytine', 'executable': 'c:\\Users\\Raytine\\.conda\\envs\\pytorch\\python.exe', 'cpu_count': 6, 'cpu_count_logical': 12, 'cpu_freq': {'current': 3192.0, 'min': 0.0, 'max': 3192.0}, 'cpu_freq_per_core': [{'current': 3192.0, 'min': 0.0, 'max': 3192.0}], 'disk': {'/': {'total': 931.4960899353027, 'used': 903.5054054260254}}, 'gpu': 'NVIDIA GeForce RTX 2060', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 2060', 'memory_total': 6442450944}], 'memory': {'total': 15.933113098144531}}
+2024-12-13 11:47:56,503 INFO    HandlerThread:1592 [system_monitor.py:probe():224] Finished collecting system info
+2024-12-13 11:47:56,503 INFO    HandlerThread:1592 [system_monitor.py:probe():227] Publishing system info
+2024-12-13 11:47:56,503 DEBUG   HandlerThread:1592 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-12-13 11:48:01,443 INFO    StreamThr :1592 [internal.py:wandb_internal():86] W&B internal server running at pid: 1592, started at: 2024-12-13 11:48:01.442500
+2024-12-13 11:48:01,444 DEBUG   HandlerThread:1592 [handler.py:handle_request():146] handle_request: status
+2024-12-13 11:48:01,451 INFO    WriterThread:1592 [datastore.py:open_for_write():87] open: .\wandb\offline-run-20241213_114801-o6nomh7z\run-o6nomh7z.wandb
+2024-12-13 11:48:01,469 DEBUG   HandlerThread:1592 [handler.py:handle_request():146] handle_request: run_start
+2024-12-13 11:48:01,532 DEBUG   HandlerThread:1592 [system_info.py:__init__():26] System info init
+2024-12-13 11:48:01,532 DEBUG   HandlerThread:1592 [system_info.py:__init__():41] System info init done
+2024-12-13 11:48:01,533 INFO    HandlerThread:1592 [system_monitor.py:start():194] Starting system monitor
+2024-12-13 11:48:01,533 INFO    SystemMonitor:1592 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-12-13 11:48:01,533 INFO    HandlerThread:1592 [system_monitor.py:probe():214] Collecting system info
+2024-12-13 11:48:01,537 INFO    SystemMonitor:1592 [interfaces.py:start():190] Started cpu monitoring
+2024-12-13 11:48:01,537 DEBUG   HandlerThread:1592 [system_info.py:probe():150] Probing system
+2024-12-13 11:48:01,537 INFO    SystemMonitor:1592 [interfaces.py:start():190] Started disk monitoring
+2024-12-13 11:48:01,539 INFO    SystemMonitor:1592 [interfaces.py:start():190] Started gpu monitoring
+2024-12-13 11:48:01,540 INFO    SystemMonitor:1592 [interfaces.py:start():190] Started memory monitoring
+2024-12-13 11:48:01,597 INFO    SystemMonitor:1592 [interfaces.py:start():190] Started network monitoring
+2024-12-13 11:48:01,598 DEBUG   HandlerThread:1592 [gitlib.py:_init_repo():56] git repository is invalid
+2024-12-13 11:48:01,598 DEBUG   HandlerThread:1592 [system_info.py:probe():198] Probing system done
+2024-12-13 11:48:01,598 DEBUG   HandlerThread:1592 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.19045-SP0', 'python': '3.11.4', 'heartbeatAt': '2024-12-13T03:48:01.537529', 'startedAt': '2024-12-13T03:48:01.423498', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '<python with no main file>', 'codePathLocal': None, 'host': 'DESKTOP-AALVSLP', 'username': 'Raytine', 'executable': 'c:\\Users\\Raytine\\.conda\\envs\\pytorch\\python.exe', 'cpu_count': 6, 'cpu_count_logical': 12, 'cpu_freq': {'current': 3192.0, 'min': 0.0, 'max': 3192.0}, 'cpu_freq_per_core': [{'current': 3192.0, 'min': 0.0, 'max': 3192.0}], 'disk': {'/': {'total': 931.4960899353027, 'used': 903.5056648254395}}, 'gpu': 'NVIDIA GeForce RTX 2060', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 2060', 'memory_total': 6442450944}], 'memory': {'total': 15.933113098144531}}
+2024-12-13 11:48:01,598 INFO    HandlerThread:1592 [system_monitor.py:probe():224] Finished collecting system info
+2024-12-13 11:48:01,598 INFO    HandlerThread:1592 [system_monitor.py:probe():227] Publishing system info
+2024-12-13 11:48:01,598 DEBUG   HandlerThread:1592 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-12-13 11:48:04,685 DEBUG   HandlerThread:1592 [system_info.py:_save_conda():222] Saving conda packages done
+2024-12-13 11:48:04,687 INFO    HandlerThread:1592 [system_monitor.py:probe():229] Finished publishing system info
+2024-12-13 11:48:04,705 DEBUG   HandlerThread:1592 [handler.py:handle_request():146] handle_request: status_report
+2024-12-13 11:48:04,705 DEBUG   SenderThread:1592 [sender.py:send_request():406] send_request: status_report
+2024-12-13 11:48:06,737 DEBUG   HandlerThread:1592 [handler.py:handle_request():146] handle_request: status_report
+2024-12-13 11:48:06,737 DEBUG   SenderThread:1592 [sender.py:send_request():406] send_request: status_report
+2024-12-13 11:48:09,871 DEBUG   HandlerThread:1592 [system_info.py:_save_conda():222] Saving conda packages done
+2024-12-13 11:48:09,874 INFO    HandlerThread:1592 [system_monitor.py:probe():229] Finished publishing system info
+2024-12-13 11:48:09,874 DEBUG   HandlerThread:1592 [handler.py:handle_request():146] handle_request: status_report
+2024-12-13 11:48:09,874 DEBUG   HandlerThread:1592 [handler.py:handle_request():146] handle_request: keepalive
+2024-12-13 11:48:09,875 DEBUG   SenderThread:1592 [sender.py:send_request():406] send_request: status_report
+2024-12-13 11:48:10,318 DEBUG   HandlerThread:1592 [handler.py:handle_request():146] handle_request: python_packages
+2024-12-13 11:48:11,735 DEBUG   HandlerThread:1592 [handler.py:handle_request():146] handle_request: partial_history
+2024-12-13 11:48:11,850 DEBUG   HandlerThread:1592 [handler.py:handle_request():146] handle_request: status_report
+2024-12-13 11:48:11,850 DEBUG   SenderThread:1592 [sender.py:send_request():406] send_request: status_report
+2024-12-13 11:48:11,909 DEBUG   HandlerThread:1592 [handler.py:handle_request():146] handle_request: status_report
+2024-12-13 11:48:11,945 DEBUG   SenderThread:1592 [sender.py:send_request():406] send_request: status_report
+2024-12-13 11:48:12,121 DEBUG   HandlerThread:1592 [handler.py:handle_request():146] handle_request: partial_history

@@ -1,0 +1,105 @@
+2024-12-17 20:32:44,228 INFO    MainThread:18376 [wandb_setup.py:_flush():76] Current SDK version is 0.16.6
+2024-12-17 20:32:44,228 INFO    MainThread:18376 [wandb_setup.py:_flush():76] Configure stats pid to 18376
+2024-12-17 20:32:44,228 INFO    MainThread:18376 [wandb_setup.py:_flush():76] Loading settings from C:\Users\Raytine\.config\wandb\settings
+2024-12-17 20:32:44,228 INFO    MainThread:18376 [wandb_setup.py:_flush():76] Loading settings from f:\Code\Knowledge_graph_with_LLM_encoding-main\wandb\settings
+2024-12-17 20:32:44,228 INFO    MainThread:18376 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-12-17 20:32:44,228 INFO    MainThread:18376 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-12-17 20:32:44,229 INFO    MainThread:18376 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2024-12-17 20:32:44,229 INFO    MainThread:18376 [wandb_setup.py:_flush():76] Applying login settings: {}
+2024-12-17 20:32:44,229 INFO    MainThread:18376 [wandb_init.py:_log_setup():521] Logging user logs to .\wandb\run-20241217_203244-5uckgtm9\logs\debug.log
+2024-12-17 20:32:44,229 INFO    MainThread:18376 [wandb_init.py:_log_setup():522] Logging internal logs to .\wandb\run-20241217_203244-5uckgtm9\logs\debug-internal.log
+2024-12-17 20:32:44,229 INFO    MainThread:18376 [wandb_init.py:_jupyter_setup():467] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x00000236F9141590>
+2024-12-17 20:32:44,229 INFO    MainThread:18376 [wandb_init.py:init():561] calling init triggers
+2024-12-17 20:32:44,230 INFO    MainThread:18376 [wandb_init.py:init():568] wandb.init called with sweep_config: {}
+config: {}
+2024-12-17 20:32:44,230 INFO    MainThread:18376 [wandb_init.py:init():611] starting backend
+2024-12-17 20:32:44,230 INFO    MainThread:18376 [wandb_init.py:init():615] setting up manager
+2024-12-17 20:32:44,234 INFO    MainThread:18376 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=spawn, using: spawn
+2024-12-17 20:32:44,242 INFO    MainThread:18376 [wandb_init.py:init():623] backend started and connected
+2024-12-17 20:32:44,254 INFO    MainThread:18376 [wandb_run.py:_label_probe_notebook():1299] probe notebook
+2024-12-17 20:32:44,257 INFO    MainThread:18376 [wandb_run.py:_label_probe_notebook():1309] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2024-12-17 20:32:44,257 INFO    MainThread:18376 [wandb_init.py:init():715] updated telemetry
+2024-12-17 20:32:44,259 INFO    MainThread:18376 [wandb_init.py:init():748] communicating run to backend with 90.0 second timeout
+2024-12-17 20:33:43,816 INFO    Thread-11 (wrapped_target):18376 [retry.py:__call__():172] Retry attempt failed:
+Traceback (most recent call last):
+  File "c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\urllib3\connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\urllib3\util\connection.py", line 95, in create_connection
+    raise err
+  File "c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\urllib3\connectionpool.py", line 714, in urlopen
+    httplib_response = self._make_request(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\urllib3\connectionpool.py", line 403, in _make_request
+    self._validate_conn(conn)
+  File "c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\urllib3\connectionpool.py", line 1053, in _validate_conn
+    conn.connect()
+  File "c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\urllib3\connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\urllib3\connection.py", line 179, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x00000236861FD910>, 'Connection to api.wandb.ai timed out. (connect timeout=20)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\urllib3\connectionpool.py", line 798, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.wandb.ai', port=443): Max retries exceeded with url: /graphql (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x00000236861FD910>, 'Connection to api.wandb.ai timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\wandb\sdk\lib\retry.py", line 131, in __call__
+    result = self._call_fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\wandb\sdk\internal\internal_api.py", line 369, in execute
+    return self.client.execute(*args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\wandb\vendor\gql-0.2.0\wandb_gql\client.py", line 52, in execute
+    result = self._get_result(document, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\wandb\vendor\gql-0.2.0\wandb_gql\client.py", line 60, in _get_result
+    return self.transport.execute(document, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\wandb\sdk\lib\gql_request.py", line 58, in execute
+    request = self.session.post(self.url, **post_args)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\requests\sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Raytine\.conda\envs\pytorch\Lib\site-packages\requests\adapters.py", line 507, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.wandb.ai', port=443): Max retries exceeded with url: /graphql (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x00000236861FD910>, 'Connection to api.wandb.ai timed out. (connect timeout=20)'))
+2024-12-17 20:34:14,954 ERROR   MainThread:18376 [wandb_init.py:init():774] encountered error: Run initialization has timed out after 90.0 sec. 
+Please refer to the documentation for additional information: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-
+2024-12-17 20:34:16,982 ERROR   MainThread:18376 [wandb_init.py:init():1199] Run initialization has timed out after 90.0 sec. 
+Please refer to the documentation for additional information: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-
+Traceback (most recent call last):
+  File "C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\wandb\sdk\wandb_init.py", line 1181, in init
+    run = wi.init()
+          ^^^^^^^^^
+  File "C:\Users\Raytine\AppData\Roaming\Python\Python311\site-packages\wandb\sdk\wandb_init.py", line 780, in init
+    raise error
+wandb.errors.CommError: Run initialization has timed out after 90.0 sec. 
+Please refer to the documentation for additional information: https://docs.wandb.ai/guides/track/tracking-faq#initstarterror-error-communicating-with-wandb-process-

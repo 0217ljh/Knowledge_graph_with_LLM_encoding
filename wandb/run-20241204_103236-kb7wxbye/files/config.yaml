@@ -1,0 +1,88 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    python_version: 3.11.4
+    cli_version: 0.16.6
+    framework: huggingface
+    huggingface_version: 4.36.2
+    is_jupyter_run: true
+    is_kaggle_kernel: false
+    start_time: 1733279556.0
+    t:
+      1:
+      - 1
+      - 9
+      - 11
+      - 41
+      - 49
+      - 55
+      - 71
+      - 77
+      - 98
+      - 103
+      - 105
+      2:
+      - 1
+      - 9
+      - 11
+      - 41
+      - 49
+      - 55
+      - 71
+      - 77
+      - 98
+      - 103
+      - 105
+      3:
+      - 7
+      - 23
+      4: 3.11.4
+      5: 0.16.6
+      6: 4.36.2
+      8:
+      - 1
+      - 3
+      - 5
+      13: windows-amd64
+    m:
+    - 1: trainer/global_step
+      6:
+      - 3
+    - 1: valid_Small_Molecules\loss
+      5: 1
+      6:
+      - 1
+    - 1: valid_Small_Molecules\acc
+      5: 1
+      6:
+      - 1
+    - 1: epoch
+      5: 1
+      6:
+      - 1
+    - 1: train_eval\loss
+      5: 1
+      6:
+      - 1
+    - 1: valid_Small_Molecules\loss/dataloader_idx_2
+      5: 1
+      6:
+      - 1
+    - 1: train_Small_Molecules\loss/dataloader_idx_1
+      5: 1
+      6:
+      - 1
+    - 1: test_Small_Molecules\loss/dataloader_idx_0
+      5: 1
+      6:
+      - 1
+    - 1: test_Small_Molecules\acc
+      5: 1
+      6:
+      - 1
+    - 1: train_Small_Molecules\acc
+      5: 1
+      6:
+      - 1
